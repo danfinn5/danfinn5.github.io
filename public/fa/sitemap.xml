@@ -2,170 +2,170 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://danfinn5.github.io/fa/blog/news/</loc>
-    <lastmod>2024-05-14T18:35:57-04:00</lastmod>
+    <loc>https://example.docsy.dev/fa/blog/news/</loc>
+    <lastmod>2024-05-14T19:09:41-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://danfinn5.github.io/blog/news/"
+                href="https://example.docsy.dev/blog/news/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fa"
-                href="https://danfinn5.github.io/fa/blog/news/"
+                href="https://example.docsy.dev/fa/blog/news/"
                 />
   </url><url>
-    <loc>https://danfinn5.github.io/fa/docs/</loc>
-    <lastmod>2024-05-14T18:35:57-04:00</lastmod>
+    <loc>https://example.docsy.dev/fa/docs/</loc>
+    <lastmod>2024-05-14T19:09:41-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://danfinn5.github.io/docs/"
+                href="https://example.docsy.dev/docs/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="no"
-                href="https://danfinn5.github.io/no/docs/"
+                href="https://example.docsy.dev/no/docs/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fa"
-                href="https://danfinn5.github.io/fa/docs/"
+                href="https://example.docsy.dev/fa/docs/"
                 />
   </url><url>
-    <loc>https://danfinn5.github.io/fa/blog/releases/</loc>
-    <lastmod>2024-05-14T18:35:57-04:00</lastmod>
+    <loc>https://example.docsy.dev/fa/blog/releases/</loc>
+    <lastmod>2024-05-14T19:09:41-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://danfinn5.github.io/blog/releases/"
+                href="https://example.docsy.dev/blog/releases/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fa"
-                href="https://danfinn5.github.io/fa/blog/releases/"
+                href="https://example.docsy.dev/fa/blog/releases/"
                 />
   </url><url>
-    <loc>https://danfinn5.github.io/fa/blog/2018/10/06/%D9%85%D8%B3%D8%AA%D8%AF%D8%A7%D8%AA-%D8%B1%D8%A7%D8%AD%D8%AA-%D8%A8%D8%A7-%D8%AF%D8%A7%DA%A9%D8%B3%DB%8C/</loc>
-    <lastmod>2024-05-14T18:35:57-04:00</lastmod>
+    <loc>https://example.docsy.dev/fa/blog/2018/10/06/%D9%85%D8%B3%D8%AA%D8%AF%D8%A7%D8%AA-%D8%B1%D8%A7%D8%AD%D8%AA-%D8%A8%D8%A7-%D8%AF%D8%A7%DA%A9%D8%B3%DB%8C/</loc>
+    <lastmod>2024-05-14T19:09:41-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://danfinn5.github.io/blog/2018/10/06/easy-documentation-with-docsy/"
+                href="https://example.docsy.dev/blog/2018/10/06/easy-documentation-with-docsy/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fa"
-                href="https://danfinn5.github.io/fa/blog/2018/10/06/%D9%85%D8%B3%D8%AA%D8%AF%D8%A7%D8%AA-%D8%B1%D8%A7%D8%AD%D8%AA-%D8%A8%D8%A7-%D8%AF%D8%A7%DA%A9%D8%B3%DB%8C/"
+                href="https://example.docsy.dev/fa/blog/2018/10/06/%D9%85%D8%B3%D8%AA%D8%AF%D8%A7%D8%AA-%D8%B1%D8%A7%D8%AD%D8%AA-%D8%A8%D8%A7-%D8%AF%D8%A7%DA%A9%D8%B3%DB%8C/"
                 />
   </url><url>
-    <loc>https://danfinn5.github.io/fa/categories/</loc>
+    <loc>https://example.docsy.dev/fa/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://danfinn5.github.io/categories/"
+                href="https://example.docsy.dev/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="no"
-                href="https://danfinn5.github.io/no/categories/"
+                href="https://example.docsy.dev/no/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fa"
-                href="https://danfinn5.github.io/fa/categories/"
+                href="https://example.docsy.dev/fa/categories/"
                 />
   </url><url>
-    <loc>https://danfinn5.github.io/fa/tags/</loc>
+    <loc>https://example.docsy.dev/fa/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://danfinn5.github.io/tags/"
+                href="https://example.docsy.dev/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="no"
-                href="https://danfinn5.github.io/no/tags/"
+                href="https://example.docsy.dev/no/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fa"
-                href="https://danfinn5.github.io/fa/tags/"
+                href="https://example.docsy.dev/fa/tags/"
                 />
   </url><url>
-    <loc>https://danfinn5.github.io/fa/</loc>
-    <lastmod>2024-05-14T18:35:57-04:00</lastmod>
+    <loc>https://example.docsy.dev/fa/</loc>
+    <lastmod>2024-05-14T19:09:41-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://danfinn5.github.io/"
+                href="https://example.docsy.dev/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="no"
-                href="https://danfinn5.github.io/no/"
+                href="https://example.docsy.dev/no/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fa"
-                href="https://danfinn5.github.io/fa/"
+                href="https://example.docsy.dev/fa/"
                 />
   </url><url>
-    <loc>https://danfinn5.github.io/fa/community/</loc>
-    <lastmod>2024-05-14T18:35:57-04:00</lastmod>
+    <loc>https://example.docsy.dev/fa/community/</loc>
+    <lastmod>2024-05-14T19:09:41-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://danfinn5.github.io/community/"
+                href="https://example.docsy.dev/community/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fa"
-                href="https://danfinn5.github.io/fa/community/"
+                href="https://example.docsy.dev/fa/community/"
                 />
   </url><url>
-    <loc>https://danfinn5.github.io/fa/blog/</loc>
-    <lastmod>2024-05-14T18:35:57-04:00</lastmod>
+    <loc>https://example.docsy.dev/fa/blog/</loc>
+    <lastmod>2024-05-14T19:09:41-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://danfinn5.github.io/blog/"
+                href="https://example.docsy.dev/blog/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fa"
-                href="https://danfinn5.github.io/fa/blog/"
+                href="https://example.docsy.dev/fa/blog/"
                 />
   </url><url>
-    <loc>https://danfinn5.github.io/fa/about/</loc>
-    <lastmod>2024-05-14T18:35:57-04:00</lastmod>
+    <loc>https://example.docsy.dev/fa/about/</loc>
+    <lastmod>2024-05-14T19:09:41-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://danfinn5.github.io/about/"
+                href="https://example.docsy.dev/about/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fa"
-                href="https://danfinn5.github.io/fa/about/"
+                href="https://example.docsy.dev/fa/about/"
                 />
   </url><url>
-    <loc>https://danfinn5.github.io/fa/search/</loc>
-    <lastmod>2024-05-14T18:35:57-04:00</lastmod>
+    <loc>https://example.docsy.dev/fa/search/</loc>
+    <lastmod>2024-05-14T19:09:41-04:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://danfinn5.github.io/search/"
+                href="https://example.docsy.dev/search/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="no"
-                href="https://danfinn5.github.io/no/search/"
+                href="https://example.docsy.dev/no/search/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fa"
-                href="https://danfinn5.github.io/fa/search/"
+                href="https://example.docsy.dev/fa/search/"
                 />
   </url>
 </urlset>

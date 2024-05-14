@@ -2,23 +2,23 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <sitemap>
-    <loc>https://danfinn5.github.io/en/sitemap.xml</loc>
+    <loc>https://example.docsy.dev/en/sitemap.xml</loc>
     
-      <lastmod>2024-05-14T18:35:57-04:00</lastmod>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>https://danfinn5.github.io/fa/sitemap.xml</loc>
-    
-      <lastmod>2024-05-14T18:35:57-04:00</lastmod>
+      <lastmod>2024-05-14T19:09:41-04:00</lastmod>
     
   </sitemap>
   
   <sitemap>
-    <loc>https://danfinn5.github.io/no/sitemap.xml</loc>
+    <loc>https://example.docsy.dev/fa/sitemap.xml</loc>
     
-      <lastmod>2024-05-14T18:35:57-04:00</lastmod>
+      <lastmod>2024-05-14T19:09:41-04:00</lastmod>
+    
+  </sitemap>
+  
+  <sitemap>
+    <loc>https://example.docsy.dev/no/sitemap.xml</loc>
+    
+      <lastmod>2024-05-14T19:09:41-04:00</lastmod>
     
   </sitemap>
   
