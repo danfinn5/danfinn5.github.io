@@ -1,0 +1,63 @@
+name: Build and Deploy Docsy Example 
+
+on: 
+  push: 
+    branches: 
+      - main  # Set a branch to deploy 
+  pull_request: 
+  workflow_dispatch:   
+
+jobs: 
+  build: 
+    runs-on: ubuntu-latest 
+
+    steps: 
+      - uses: actions/checkout@v2 
+        with: 
+          submodules: recursive
+  
+      - name: Setup Hugo 
+        uses: peaceiris/actions-hugo@v2 
+        with: 
+          hugo-version: '0.126.0' 
+          extended: true 
+
+      - name: Install Node.js 
+        uses: actions/setup-node@v2 
+        with: 
+          node-version: '16'   
+
+      - name: Cache npm dependencies 
+        uses: actions/cache@v2 
+        with: 
+          path: ~/.npm 
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }} 
+          restore-keys: | 
+            ${{ runner.os }}-node-   
+
+      - name: Generate package-lock.json 
+        run: npm install 
+
+      - name: Install postcss and postcss-cli 
+        run: npm install postcss postcss-cli --save-dev 
+
+      - name: Build site 
+        run: hugo --minify 
+
+  deploy: 
+    needs: build 
+    runs-on: ubuntu-latest 
+    steps: 
+    - name: Deploy to GitHub Pages 
+      uses: peaceiris/actions-gh-pages@v3 
+      with: 
+        github_token: ${{ secrets.DEPLOYTOKEN }} 
+        publish_dir: ./public 
+        cname: danfinn5.github.io 
+        publish_branch: gh-pages 
+        allow_empty_commit: false 
+        keep_files: false 
+        force_orphan: false 
+        enable_jekyll: false 
+        disable_nojekyll: false 
+        exclude_assets: .github 
