@@ -44,19 +44,21 @@ jobs:
       - name: Build site 
         run: hugo --minify 
 
-  deploy: 
-    needs: build 
-    runs-on: ubuntu-latest 
-    steps: 
-    - name: Deploy to GitHub Pages 
-      uses: peaceiris/actions-gh-pages@v3 
-      with: 
-        github_token: ${{ secrets.DEPLOYTOKEN }} 
-        publish_dir: ./public
-        publish_branch: gh-pages-deploy
-        allow_empty_commit: false 
-        keep_files: false 
-        force_orphan: false 
-        enable_jekyll: false 
-        disable_nojekyll: false 
-        exclude_assets: .github 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to GitHub Pages
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "GitHub Actions"
+          git checkout gh-pages-deploy
+          rsync -av --delete-after --exclude='.git' ../public/ ./
+          git add .
+          git commit -m "Deploy Hugo site to GitHub Pages"
+          git push origin gh-pages-deploy
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.DEPLOYTOKEN }}
