@@ -1,48 +1,54 @@
-name: Build and Deploy Docsy Example 
+name: Build and Deploy Docsy Example
 
-on: 
-  push: 
-    branches: 
-      - main  # Set a branch to deploy 
-  pull_request: 
-  workflow_dispatch:   
+on:
+  push:
+    branches:
+      - main  # Set a branch to deploy
+  pull_request:
+  workflow_dispatch:
 
-jobs: 
-  build: 
-    runs-on: ubuntu-latest 
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-    steps: 
-      - uses: actions/checkout@v2 
-        with: 
+    steps:
+      - uses: actions/checkout@v2
+        with:
           submodules: recursive
-  
-      - name: Setup Hugo 
-        uses: peaceiris/actions-hugo@v2 
-        with: 
-          hugo-version: '0.126.0' 
-          extended: true 
 
-      - name: Install Node.js 
-        uses: actions/setup-node@v2 
-        with: 
-          node-version: '16'   
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.126.0'
+          extended: true
 
-      - name: Cache npm dependencies 
-        uses: actions/cache@v2 
-        with: 
-          path: ~/.npm 
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }} 
-          restore-keys: | 
-            ${{ runner.os }}-node-   
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
 
-      - name: Generate package-lock.json 
-        run: npm install 
+      - name: Cache npm dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-      - name: Install postcss and postcss-cli 
-        run: npm install postcss postcss-cli --save-dev 
+      - name: Generate package-lock.json
+        run: npm install
 
-      - name: Build site 
-        run: hugo --minify 
+      - name: Install postcss and postcss-cli
+        run: npm install postcss postcss-cli --save-dev
+
+      - name: Build site
+        run: hugo --minify
+        # Upload the public folder as an artifact
+        - name: Upload site artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: site
+            path: public
 
   deploy:
     needs: build
