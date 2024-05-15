@@ -44,11 +44,11 @@ jobs:
       - name: Build site
         run: hugo --minify
         # Upload the public folder as an artifact
-        - name: Upload site artifact
-          uses: actions/upload-artifact@v2
-          with:
-            name: site
-            path: public
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: site
+          path: public
 
   deploy:
     needs: build
