@@ -48,6 +48,12 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Download site artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: site
+          path: public
+
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -55,5 +61,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.DEPLOYTOKEN }}
-          publish_dir: ./public  # Path to your built site files
+          publish_dir: ./public
           publish_branch: gh-pages-deploy
