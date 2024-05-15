@@ -66,4 +66,4 @@ jobs:
           git commit -m "Deploy Hugo site to GitHub Pages"
           git push origin gh-pages-deploy
         env:
-          ACTIONS_DEPLOY_KEY: ${{ secrets.GH_PAT }}
+          ACTIONS_DEPLOY_KEY: ${{ secrets.DEPLOY_TOKEN }}
