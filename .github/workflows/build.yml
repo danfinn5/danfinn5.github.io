@@ -51,19 +51,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Create gh-pages-deploy branch if it doesn't exist
-        run: |
-          git checkout -B gh-pages-deploy
-          git push origin gh-pages-deploy
-
       - name: Deploy to GitHub Pages
-        run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "GitHub Actions"
-          git checkout gh-pages-deploy
-          rsync -av --delete-after --exclude='.git' ../public/ ./
-          git add .
-          git commit -m "Deploy Hugo site to GitHub Pages"
-          git push origin gh-pages-deploy
-        env:
-          ACTIONS_DEPLOY_KEY: ${{ secrets.DEPLOY_TOKEN }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public  # Path to your built site files
+          publish_branch: gh-pages-deploy
