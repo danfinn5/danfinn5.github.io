@@ -19,21 +19,22 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Sample API Documentation | </title>
+<title>API Documentation | </title>
 <meta name="description" content="An interactive section showcasing API Documentation.
 ">
 <meta property="og:url" content="http://localhost:1313/docs/api_docs/">
   <meta property="og:site_name" content="Portfolio">
-  <meta property="og:title" content="Sample API Documentation">
+  <meta property="og:title" content="API Documentation">
   <meta property="og:description" content="An interactive section showcasing API Documentation.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="website">
 
-  <meta itemprop="name" content="Sample API Documentation">
+  <meta itemprop="name" content="API Documentation">
   <meta itemprop="description" content="An interactive section showcasing API Documentation.
 ">
   <meta itemprop="datePublished" content="2024-05-16T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2024-05-16T15:28:16-04:00"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Sample API Documentation">
+  <meta itemprop="dateModified" content="2024-05-16T15:28:16-04:00">
+  <meta itemprop="wordCount" content="1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="API Documentation">
 <meta name="twitter:description" content="An interactive section showcasing API Documentation.
 ">
 
@@ -97,7 +98,7 @@ This is the multi-page printable view of this section.
 
 
 
-<h1 class="title">Sample API Documentation</h1>
+<h1 class="title">API Documentation</h1>
 <div class="lead">An interactive section showcasing API Documentation.</div>
 
 
@@ -116,23 +117,75 @@ This is the multi-page printable view of this section.
 
 
 <div class="content">
-      <style>iframe{width:100%}</style>
-<iframe id="swagger-ui" frameBorder="0" scrolling="no" src="http://localhost:1313/swagger-ui/index.html" >
-</iframe>
+      
+        <style>
+          #redoc input { height: 64px; }
+          #redoc span[type="put"], span[type="get"], span[type="delete"], span[type="post"], span[type="options"], span[type="patch"], span[type="basic"], span[type="link"], span[type="head"] {
+              border-radius: 4px;
+            }
+          #redoc h2 { margin-top: 0px;}
+      </style>
+  
+    
+    <style>
+      #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 30px;
+        z-index: 99;
+        font-size: 18px;
+        border: none;
+        outline: none;
+        background-color: #30638E;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 4px;
+      }
+      
+      #myBtn:hover {
+        background-color: #555;
+      }
+  </style>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+      
+      var mybutton = document.getElementById("myBtn");
+      
+      
+      window.onscroll = function() {scrollFunction()};
+      
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }
+      
+      
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+  </script>
+    
 
-<script type="text/javascript" src="http://localhost:1313/scripts/iframeResizer.min.js"></script>
-<script type="text/javascript">
-  iFrameResize({
-    log         : true,                  
-    checkOrigin : false,
-    sizeWidth   : true,
-    widthCalculationMethod : 'rightMostElement'
-  });
-  var shortcode_url = "http:\/\/petstore.swagger.io\/v2\/swagger.json";
-  
-  var shortcode_api_key = "special-key";
-  
-</script>
+    
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+
+    
+   <div id="redoc-container">
+   <redoc spec-url='https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v2.0/yaml/petstore.yaml' hide-hostname="true" suppress-warnings="true" lazy-rendering  native-scrollbars scroll-y-offset=".js-navbar-scroll" ZgotmplZ></redoc>
+   </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"></script>
 
 
 </div>
