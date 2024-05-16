@@ -6,12 +6,9 @@
     <lastmod>2024-05-14T19:31:36-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/style_guide/</loc>
-    <lastmod>2024-05-16T11:13:29-04:00</lastmod>
+    <lastmod>2024-05-16T15:28:16-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tasks/ponycopters/configuring-ponycopters/</loc>
-    <lastmod>2024-05-14T19:31:36-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/docs/examples/</loc>
     <lastmod>2024-05-14T19:31:36-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/tasks/ponycopters/launching-ponycopters/</loc>
@@ -32,20 +29,17 @@
     <loc>http://localhost:1313/docs/reference/</loc>
     <lastmod>2024-05-14T19:31:36-04:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/docs/resume/</loc>
-    <lastmod>2024-05-16T11:13:29-04:00</lastmod>
-  </url><url>
     <loc>http://localhost:1313/blog/news/</loc>
     <lastmod>2024-05-14T19:31:36-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/</loc>
-    <lastmod>2024-05-14T19:31:36-04:00</lastmod>
+    <lastmod>2024-05-16T15:28:16-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/releases/</loc>
     <lastmod>2024-05-14T19:31:36-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/docs/api_docs/</loc>
-    <lastmod>2024-05-16T11:13:29-04:00</lastmod>
+    <lastmod>2024-05-16T15:28:16-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/2018/10/06/easy-documentation-with-docsy/</loc>
     <lastmod>2024-05-14T19:31:36-04:00</lastmod>
@@ -63,33 +57,19 @@
     <lastmod>2024-05-14T19:31:36-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/about/</loc>
-    <lastmod>2024-05-14T19:31:36-04:00</lastmod>
+    <lastmod>2024-05-16T15:28:16-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/</loc>
     <lastmod>2024-05-14T19:31:36-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2024-05-16T11:13:29-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/docs/</loc>
-    <lastmod>2024-05-16T11:13:29-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/examples/</loc>
-    <lastmod>2024-05-16T11:13:29-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/categories/placeholders/</loc>
-    <lastmod>2024-05-16T11:13:29-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2024-05-16T11:13:29-04:00</lastmod>
+    <lastmod>2024-05-16T15:28:16-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/search/</loc>
     <lastmod>2024-05-14T19:31:36-04:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2024-05-16T11:13:29-04:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/test/</loc>
-    <lastmod>2024-05-16T11:13:29-04:00</lastmod>
   </url>
 </urlset>

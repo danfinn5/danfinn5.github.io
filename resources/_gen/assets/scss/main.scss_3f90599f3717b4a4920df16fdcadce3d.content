@@ -19709,4 +19709,7 @@ div.drawioframe {
 .navbar .navbar-nav .nav-link, .td-navbar .navbar-nav .nav-link {
   text-shadow: none; }
 
+a {
+  color: #30638E; }
+
 /*# sourceMappingURL=main.css.map */
