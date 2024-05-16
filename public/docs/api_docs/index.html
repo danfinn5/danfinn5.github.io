@@ -20,23 +20,18 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>API Documentation | </title>
-<meta name="description" content="An interactive section showcasing API Documentation.
-">
+<meta name="description" content="Reference for the Pet Store API">
 <meta property="og:url" content="http://localhost:1313/docs/api_docs/">
   <meta property="og:site_name" content="Portfolio">
   <meta property="og:title" content="API Documentation">
-  <meta property="og:description" content="An interactive section showcasing API Documentation.">
+  <meta property="og:description" content="Reference for the Pet Store API">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="API Documentation">
-  <meta itemprop="description" content="An interactive section showcasing API Documentation.
-">
-  <meta itemprop="datePublished" content="2024-05-16T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2024-05-16T15:28:16-04:00">
-  <meta itemprop="wordCount" content="1"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="API Documentation">
-<meta name="twitter:description" content="An interactive section showcasing API Documentation.
-">
+  <meta itemprop="description" content="Reference for the Pet Store API">
+  <meta itemprop="dateModified" content="2024-05-16T17:03:47-04:00"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="API Documentation">
+<meta name="twitter:description" content="Reference for the Pet Store API">
 
 
 
@@ -49,6 +44,8 @@
   integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
   crossorigin="anonymous"></script>
 
+    <title>API Documentation | </title>
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5.1.0/swagger-ui.css" integrity="sha384-4cTBOIJxihgy9mISVlGqdBZkd66byHFwoLscqza6swXPIp5qiLBwuzuJD9cMjYOw" crossorigin="anonymous">
   </head>
   <body class="td-section">
     <header>
@@ -95,7 +92,9 @@
       <li class="td-sidebar-nav__section-title td-sidebar-nav__section with-child active-path" id="m-docs-li">
   <a href="/docs/" title="Portfolio Samples" class="align-left ps-0 td-sidebar-link td-sidebar-link__section tree-root" id="m-docs"><span class="">Portfolio</span></a>
   <ul class="ul-1">
-    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsoverview-li">
+    <li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsapi_docs-li">
+  <a href="/docs/api_docs/" class="align-left ps-0 active td-sidebar-link td-sidebar-link__section" id="m-docsapi_docs"><span class="td-sidebar-nav-active-item">API Documentation</span></a>
+</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsoverview-li">
   <a href="/docs/overview/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsoverview"><span class="">Overview</span></a>
 </li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child" id="m-docsstyle_guide-li">
   <a href="/docs/style_guide/" class="align-left ps-0 td-sidebar-link td-sidebar-link__section" id="m-docsstyle_guide"><span class="">Style Guide</span></a>
@@ -129,8 +128,6 @@
   <a href="/docs/reference/parameter-reference/" class="align-left ps-0 td-sidebar-link td-sidebar-link__page" id="m-docsreferenceparameter-reference"><span class="">Parameter Reference</span></a>
 </li>
   </ul>
-</li><li class="td-sidebar-nav__section-title td-sidebar-nav__section without-child active-path" id="m-docsapi_docs-li">
-  <a href="/docs/api_docs/" class="align-left ps-0 active td-sidebar-link td-sidebar-link__section" id="m-docsapi_docs"><span class="td-sidebar-nav-active-item">API Documentation</span></a>
 </li>
   </ul>
 </li>
@@ -155,9 +152,6 @@
 	
           </aside>
           <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
-            
-  
-
             <nav aria-label="breadcrumb" class="td-breadcrumbs">
   <ol class="breadcrumb">
   <li class="breadcrumb-item">
@@ -166,82 +160,30 @@
     API Documentation</li>
   </ol>
 </nav>
+            <script src="https://unpkg.com/swagger-ui-dist@5.1.0/swagger-ui-bundle.js" integrity="sha384-TBW5qg/G561aZRk4jvscdaB7BEDK/9wpe/jS8vyKzK/ls+nJfWQw0W4cobLRYkWk" crossorigin="anonymous"></script>
+            <script src="https://unpkg.com/swagger-ui-dist@5.1.0/swagger-ui-standalone-preset.js" integrity="sha384-cftHzufgeQ3yLXAwNPSMCBSqPUkItABWOchc20veg7pQ1sDu0FQSp0Grfx/BfhN7" crossorigin="anonymous"></script>
             
 <div class="td-content">
 	<h1>API Documentation</h1>
-  <div class="lead">An interactive section showcasing API Documentation.</div>
+	<div class="lead">Reference for the Pet Store API</div>
 	<header class="article-meta">
 		
   </header>
 	
-        <style>
-          #redoc input { height: 64px; }
-          #redoc span[type="put"], span[type="get"], span[type="delete"], span[type="post"], span[type="options"], span[type="patch"], span[type="basic"], span[type="link"], span[type="head"] {
-              border-radius: 4px;
-            }
-          #redoc h2 { margin-top: 0px;}
-      </style>
-  
-    
-    <style>
-      #myBtn {
-        display: none;
-        position: fixed;
-        bottom: 20px;
-        right: 30px;
-        z-index: 99;
-        font-size: 18px;
-        border: none;
-        outline: none;
-        background-color: #30638E;
-        color: white;
-        cursor: pointer;
-        padding: 15px;
-        border-radius: 4px;
-      }
-      
-      #myBtn:hover {
-        background-color: #555;
-      }
-  </style>
-  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-  <script>
-      
-      var mybutton = document.getElementById("myBtn");
-      
-      
-      window.onscroll = function() {scrollFunction()};
-      
-      function scrollFunction() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-          mybutton.style.display = "block";
-        } else {
-          mybutton.style.display = "none";
-        }
-      }
-      
-      
-      function topFunction() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-      }
-  </script>
-    
-
-    
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-
-    
-   <div id="redoc-container">
-   <redoc spec-url='https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v2.0/yaml/petstore.yaml' hide-hostname="true" suppress-warnings="true" lazy-rendering  native-scrollbars scroll-y-offset=".js-navbar-scroll" ZgotmplZ></redoc>
-   </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/redoc@latest/bundles/redoc.standalone.js"></script>
+<div id="docsy_swagger_ui"></div>
+<script>
+  window.onload = function () {
+    const ui = SwaggerUIBundle({
+      url: "http://petstore.swagger.io/v2/swagger.json",
+      dom_id: '#docsy_swagger_ui',
+      presets: [
+        SwaggerUIBundle.presets.apis,
+        SwaggerUIStandalonePreset
+      ]
+    });
+    window.ui = ui;
+  };
+</script>
 
 
   <div class="section-index">
@@ -249,7 +191,7 @@
     
     </div>
 <div class="td-page-meta__lastmod">
-  Last modified May 16, 2024: <a href="https://github.com/google/docsy-example/commit/152877566dc42eba2cf34936b2b0b3ea0ad6b62f">update site (1528775)</a>
+  Last modified May 16, 2024: <a href="https://github.com/google/docsy-example/commit/e5e236869d8945b0178ecb76c1dbc64ff7f446ea">api docs (e5e2368)</a>
 </div>
 </div>
 

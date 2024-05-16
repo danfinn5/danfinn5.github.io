@@ -1,8 +1,8 @@
 ---
 title: API Documentation
-description: >
-  An interactive section showcasing API Documentation.
-date: 2024-05-16
+type: "swagger"
+weight: 1
+description: "Reference for the Pet Store API"
 ---
 
-{{< redoc "https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v2.0/yaml/petstore.yaml" >}}
+{{< swaggerui src="http://petstore.swagger.io/v2/swagger.json" api_key="special-key" >}}
