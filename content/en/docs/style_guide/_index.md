@@ -4,6 +4,7 @@ weight: 1
 description: >
   Style Guide Sample
 ---
+This is a generic style guide derived from the excellent [Gitlab Style Guide](https://docs.gitlab.com/ee/development/documentation/styleguide/). 
 
 # Documentation Style Guide
 

@@ -6,7 +6,6 @@
     <description>Recent content in Docs on </description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 05 Jan 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/docs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Resume</title>
@@ -14,13 +13,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/docs/resume/</guid>
       <description>This is a placeholder page that shows you how to use this template site.&#xA;Daniel R. Finn&#xD;Somerville, MA • (978) 987 7694 • danfinn5@gmail.com • www.linkedin.com/in/danielrfinn&#xA;PERSONAL SUMMARY&#xD;Experienced technical writer with an aptitude for documenting complex software products in dynamic and demanding environments. Demonstrated ability to drive strategy, lead teams, and collaborate cross-functionally to deliver high-quality documentation for multiple audiences.&#xA;EXPERIENCE&#xD;Takeoff Technologies Inc., Waltham, MA&#xD;Senior Technical Writer 2020 – Present</description>
-    </item>
-    <item>
-      <title>Example Page</title>
-      <link>http://localhost:1313/docs/resume/example-page/</link>
-      <pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/resume/example-page/</guid>
-      <description>This is a placeholder page. Replace it with your own content.&#xA;Text can be bold, italic, or strikethrough. Links should be blue with no underlines (unless hovered over).&#xA;There should be whitespace between paragraphs. Vape migas chillwave sriracha poutine try-hard distillery. Tattooed shabby chic small batch, pabst art party heirloom letterpress air plant pop-up. Sustainable chia skateboard art party banjo cardigan normcore affogato vexillologist quinoa meggings man bun master cleanse shoreditch readymade.</description>
     </item>
   </channel>
 </rss>
