@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Test on Goldydocs</title>
+    <title>Test on </title>
     <link>http://localhost:1313/tags/test/</link>
-    <description>Recent content in Test on Goldydocs</description>
+    <description>Recent content in Test on </description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 14 May 2024 19:31:36 -0400</lastBuildDate>
+    <lastBuildDate>Thu, 05 Jan 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/test/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Getting Started</title>
-      <link>http://localhost:1313/docs/getting-started/</link>
+      <title>Resume</title>
+      <link>http://localhost:1313/docs/resume/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/getting-started/</guid>
-      <description>This is a placeholder page that shows you how to use this template site.&#xA;Information in this section helps your user try your project themselves.&#xA;What do your users need to do to start using your project? This could include downloading/installation instructions, including any prerequisites or system requirements.&#xA;Introductory “Hello World” example, if appropriate. More complex tutorials should live in the Tutorials section.&#xA;Consider using the headings below for your getting started page.</description>
+      <guid>http://localhost:1313/docs/resume/</guid>
+      <description>This is a placeholder page that shows you how to use this template site.&#xA;Daniel R. Finn&#xD;Somerville, MA • (978) 987 7694 • danfinn5@gmail.com • www.linkedin.com/in/danielrfinn&#xA;PERSONAL SUMMARY&#xD;Experienced technical writer with an aptitude for documenting complex software products in dynamic and demanding environments. Demonstrated ability to drive strategy, lead teams, and collaborate cross-functionally to deliver high-quality documentation for multiple audiences.&#xA;EXPERIENCE&#xD;Takeoff Technologies Inc., Waltham, MA&#xD;Senior Technical Writer 2020 – Present</description>
     </item>
     <item>
       <title>Example Page</title>
-      <link>http://localhost:1313/docs/getting-started/example-page/</link>
+      <link>http://localhost:1313/docs/resume/example-page/</link>
       <pubDate>Thu, 05 Jan 2017 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/getting-started/example-page/</guid>
+      <guid>http://localhost:1313/docs/resume/example-page/</guid>
       <description>This is a placeholder page. Replace it with your own content.&#xA;Text can be bold, italic, or strikethrough. Links should be blue with no underlines (unless hovered over).&#xA;There should be whitespace between paragraphs. Vape migas chillwave sriracha poutine try-hard distillery. Tattooed shabby chic small batch, pabst art party heirloom letterpress air plant pop-up. Sustainable chia skateboard art party banjo cardigan normcore affogato vexillologist quinoa meggings man bun master cleanse shoreditch readymade.</description>
     </item>
   </channel>

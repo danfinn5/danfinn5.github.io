@@ -113,16 +113,6 @@
   </url><url>
     <loc>http://localhost:1313/fa/community/</loc>
     <lastmod>2024-05-14T19:31:36-04:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="http://localhost:1313/community/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fa"
-                href="http://localhost:1313/fa/community/"
-                />
   </url><url>
     <loc>http://localhost:1313/fa/blog/</loc>
     <lastmod>2024-05-14T19:31:36-04:00</lastmod>
