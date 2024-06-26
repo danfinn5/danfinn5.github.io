@@ -1,7 +1,7 @@
 ---
-title: Overview
-description: Here's where your user finds out if your project is for them.
-weight: 1
+title: Tools and Scripts
+description: This section contains some helpful tools and scripts I've created. 
+weight: 6
 ---
 
 {{% pageinfo %}}

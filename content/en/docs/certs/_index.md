@@ -1,8 +1,9 @@
 ---
 title: Certificates
+description: Certificates I've earned on Coursera and elsewhere.
 linkTitle: Certificates
-menu: {main: {weight: 20}}
-weight: 20
+menu: {main: {weight: 90}}
+weight: 90
 ---
 
 {{% pageinfo %}}

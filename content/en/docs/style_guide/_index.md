@@ -1,8 +1,8 @@
 ---
-title: Style Guide
-weight: 1
+title: Style Guide Example
+weight: 10
 description: >
-  Style Guide Sample
+  Sample Style Guide
 ---
 This is a generic style guide derived from the excellent [Gitlab Style Guide](https://docs.gitlab.com/ee/development/documentation/styleguide/). 
 
