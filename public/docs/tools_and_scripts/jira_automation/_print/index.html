@@ -1,0 +1,248 @@
+<!doctype html>
+<html itemscope itemtype="http://schema.org/WebPage" lang="en" class="no-js">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="canonical" type="text/html" href="http://localhost:1313/docs/tools_and_scripts/jira_automation/">
+<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/docs/tools_and_scripts/jira_automation/index.xml">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>Jira Automation Rules | </title>
+<meta name="description" content="This section contains explanations of some helpful Jira Automation Rules I&#39;ve created.">
+<meta property="og:url" content="http://localhost:1313/docs/tools_and_scripts/jira_automation/">
+  <meta property="og:site_name" content="Portfolio">
+  <meta property="og:title" content="Jira Automation Rules">
+  <meta property="og:description" content="This section contains explanations of some helpful Jira Automation Rules I&#39;ve created.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="website">
+
+  <meta itemprop="name" content="Jira Automation Rules">
+  <meta itemprop="description" content="This section contains explanations of some helpful Jira Automation Rules I&#39;ve created."><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Jira Automation Rules">
+<meta name="twitter:description" content="This section contains explanations of some helpful Jira Automation Rules I&#39;ve created.">
+
+
+
+
+
+<link href="/scss/main.css" rel="stylesheet">
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous"></script>
+
+  </head>
+  <body class="td-section">
+    <header>
+      <nav class="td-navbar js-navbar-scroll" data-bs-theme="dark">
+<div class="container-fluid flex-column flex-md-row">
+  <a class="navbar-brand" href="/"><span class="navbar-brand__logo navbar-logo"><svg fill="#000" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="50" height="50" viewBox="0 0 495.398 495.398"><g><g><g><path d="M487.083 225.514l-75.08-75.08V63.704c0-15.682-12.708-28.391-28.413-28.391-15.669.0-28.377 12.709-28.377 28.391v29.941L299.31 37.74c-27.639-27.624-75.694-27.575-103.27.05L8.312 225.514c-11.082 11.104-11.082 29.071.0 40.158 11.087 11.101 29.089 11.101 40.172.0l187.71-187.729c6.115-6.083 16.893-6.083 22.976-.018l187.742 187.747c5.567 5.551 12.825 8.312 20.081 8.312 7.271.0 14.541-2.764 20.091-8.312C498.17 254.586 498.17 236.619 487.083 225.514z"/><path d="M257.561 131.836c-5.454-5.451-14.285-5.451-19.723.0L72.712 296.913c-2.607 2.606-4.085 6.164-4.085 9.877v120.401c0 28.253 22.908 51.16 51.16 51.16h81.754v-126.61h92.299v126.61h81.755c28.251.0 51.159-22.907 51.159-51.159V306.79c0-3.713-1.465-7.271-4.085-9.877L257.561 131.836z"/></g></g></g></svg></span><span class="navbar-brand__name"></span></a>
+  <div class="td-navbar-nav-scroll ms-md-auto" id="main_navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/about/"><span>About</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/docs/"><span>Portfolio</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/blog/"><span>Blog</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/docs/certs/"><span>Certificates</span></a>
+      </li>
+      </ul>
+  </div>
+  <div class="d-none d-lg-block">
+    <div class="td-search">
+  <div class="td-search__icon"></div>
+  <input type="search" class="td-search__input form-control td-search-input" placeholder="Search this site…" aria-label="Search this site…" autocomplete="off">
+</div>
+  </div>
+</div>
+</nav>
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <main class="col-12 col-md-9 col-xl-8 ps-md-5" role="main">
+            
+
+
+
+
+<div class="td-content">
+<div class="pageinfo pageinfo-primary d-print-none">
+<p>
+This is the multi-page printable view of this section.
+<a href="#" onclick="print();return false;">Click here to print</a>.
+</p><p>
+<a href="/docs/tools_and_scripts/jira_automation/">Return to the regular view of this page</a>.
+</p>
+</div>
+
+
+
+<h1 class="title">Jira Automation Rules</h1>
+<div class="lead">This section contains explanations of some helpful Jira Automation Rules I&rsquo;ve created.</div>
+
+
+
+
+    <ul>
+    
+  
+  
+  
+  
+
+  
+    
+    
+	
+<li>1: <a href="#pg-2e74612e4aa34dd5029698f4d2be4325">Jira Automation Rules</a></li>
+
+
+    
+  
+
+    </ul>
+
+
+<div class="content">
+      
+</div>
+</div>
+
+
+  
+  
+  
+  
+
+  
+  
+
+  
+    
+    
+	
+    
+
+<div class="td-content" style="">
+    
+	<h1 id="pg-2e74612e4aa34dd5029698f4d2be4325">1 - Jira Automation Rules</h1>
+    <div class="lead">This section contains some helpful tools and scripts I&rsquo;ve created.</div>
+	<p>This section describes a series of Jira Automation Rules that can be used to</p>
+<h3 id="problem-statement">Problem Statement:<a class="td-heading-self-link" href="#problem-statement" aria-label="Heading self-link"></a></h3>
+<p>In Jira Cloud, each project has unique <strong>Release</strong> versions. There is no concept of a &ldquo;shared&rdquo; version across multiple projects.</p>
+<p>However, you can use Jira&rsquo;s Automation features along with some custom fields and a designated ticket to automatically create and assign common releases across multiple projects.</p>
+<h3 id="example">Example<a class="td-heading-self-link" href="#example" aria-label="Heading self-link"></a></h3>
+<p>You might need this if your company performs regular deployments of a group of software services, and the development teams that support those services each use different Jira projects. This provides you with visibility into which tickets across multiple Jira projects are associated with a given deployment.</p>
+<h3 id="overview">Overview<a class="td-heading-self-link" href="#overview" aria-label="Heading self-link"></a></h3>
+<p>Implementing this solution involves several rules and custom fields. The following diagram provides an overview of how this works:</p>
+<p>This Jira automation rule is designed to automatically manage and set the next RT (Release Train) version for multiple projects on a biweekly schedule. Here&rsquo;s a breakdown of its main components and actions:</p>
+<p>Trigger: The rule is scheduled to run biweekly every Wednesday at noon (12:00 PM) Eastern Time. It checks for issues updated within the specified time frame.</p>
+<p>Conditions and Actions:</p>
+<p>Initial Check: It first checks if the current week of the year is an even week using a regular expression condition.
+Issue Selection: It specifically targets the issue with a specific issue key (e.g., DF-12345).
+Set Variable: It creates a variable LastRTVersion with the value of the fixVersions field from the targeted issue.
+Log and Release: It logs the LastRTVersion value and releases it across multiple projects (by project ID).</p>
+<p>Subsequent Actions:</p>
+<p>Next RT Version: The rule creates a new version for the next release train in a specific format RT{{now.plusWeeks(2).weekOfYearIso.format}}-{{now.plusWeeks(2).format(&ldquo;yy&rdquo;)}}:[{{now.plusDays(14).format(&ldquo;yy-MM-dd&rdquo;)}}].
+Update Fix Version: It sets the fixVersions field of the issue TD-2333 to this newly created version.
+Create Variable: A new variable nextRTversion is created with the new fixVersions value.
+Log and Create Versions: It logs nextRTversion and creates this version across the same set of projects mentioned earlier.
+Projects: The rule applies to multiple projects identified by their IDs (10286, 10268, 10222, 10276, 10274, 10275, 10198, 10246, 10294, 10281).</p>
+<p>In summary, this rule automates the process of setting and releasing new RT versions every two weeks, ensuring that the versioning across different projects is synchronized and up-to-date.</p>
+
+</div>
+
+
+
+    
+	
+  
+
+
+
+          </main>
+        </div>
+      </div>
+      <footer class="td-footer row d-print-none">
+  <div class="container-fluid">
+    <div class="row mx-md-2">
+      <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="User mailing list" aria-label="User mailing list">
+    <a target="_blank" rel="noopener" href="https://example.org/mail" aria-label="User mailing list">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Twitter" aria-label="Twitter">
+    <a target="_blank" rel="noopener" href="https://example.org/twitter" aria-label="Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Stack Overflow" aria-label="Stack Overflow">
+    <a target="_blank" rel="noopener" href="https://example.org/stack" aria-label="Stack Overflow">
+      <i class="fab fa-stack-overflow"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__right col-6 col-sm-4 order-sm-3">
+        <ul class="td-footer__links-list">
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="GitHub" aria-label="GitHub">
+    <a target="_blank" rel="noopener" href="https://github.com/google/docsy" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Slack" aria-label="Slack">
+    <a target="_blank" rel="noopener" href="https://example.org/slack" aria-label="Slack">
+      <i class="fab fa-slack"></i>
+    </a>
+  </li>
+  
+  <li class="td-footer__links-item" data-bs-toggle="tooltip" title="Developer mailing list" aria-label="Developer mailing list">
+    <a target="_blank" rel="noopener" href="https://example.org/mail" aria-label="Developer mailing list">
+      <i class="fa fa-envelope"></i>
+    </a>
+  </li>
+  
+</ul>
+
+      </div><div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+        <span class="td-footer__copyright">&copy;
+    2018&ndash;2024
+    <span class="td-footer__authors">Docsy Authors | <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a> |</span></span><span class="td-footer__all_rights_reserved">All Rights Reserved</span><span class="ms-2"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script src="/js/main.js"></script>
+<script defer src="/js/click-to-copy.js" crossorigin="anonymous"></script>
+<script src='/js/tabpane-persist.js'></script>
+
+  </body>
+</html>

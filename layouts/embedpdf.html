@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .Title }}</title>
+    <link rel="stylesheet" href="/pdfjs/web/viewer.css"/>
+    <style>
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            margin-bottom: 20px;
+        }
+        /* Disable printing and downloading */
+        #toolbarViewerRight, .print, .download { display: none; }
+    </style>
+</head>
+<body>
+    <div>
+        {{ .Content }}
+    </div>
+    <script src="/pdfjs/web/viewer.js"></script>
+</body>
+</html>
