@@ -1,9 +1,9 @@
 ---
 title: Release Notes Samples
+layout: "protected"
 description: Some examples of general Release Notes and Hotfix documentation.
 date: 2024-06-25
 weight: 3
-layout: "protected"
 ---
 
 - [Product Release Notes](#product-release-notes)

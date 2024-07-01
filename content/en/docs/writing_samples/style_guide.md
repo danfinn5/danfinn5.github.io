@@ -1,9 +1,9 @@
 ---
 title: Style Guide Sample
+layout: "protected"
 weight: 10
 description: > 
   Sample Style Guide
-layout: "protected"
 ---
 This is a generic style guide derived from the excellent [Gitlab Style Guide](https://docs.gitlab.com/ee/development/documentation/styleguide/). 
 

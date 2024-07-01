@@ -1,9 +1,9 @@
 ---
 title: Technical Guides
+layout: "protected"
 description: Technical Guide samples including Installation, Configuration, Administrator guides, and Service Requirements.
 date: 2024-06-25
 weight: 2
-layout: "protected"
 ---
 
 - [Installation Guide](#installation-guide)

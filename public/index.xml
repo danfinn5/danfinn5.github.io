@@ -36,25 +36,11 @@
       <description>This is a generic style guide derived from the excellent Gitlab Style Guide.&#xA;Introduction&#xD;This document defines the standards for Company documentation, including grammar, formatting, word use, and more.&#xA;For style questions, create an issue or merge request with the docs team.&#xA;Introduction Why? The documentation includes all of our information The documentation includes all media types Topic types Link instead of repeating text Docs-first methodology Markdown HTML in Markdown Markdown Rules Structure Folder structure overview Work with directories and files Avoid duplication References across documents Structure in documents Writing Style Guidelines Language Trademark Capitalization Headings UI text Feature names Other terms Inclusive language Avoid gender-specific wording Avoid ableist language Culturally sensitive language Fake user information Fake URLs Fake tokens Usage list Contractions Text Emphasis Punctuation Placeholder text Keyboard commands Spaces between words Lists Ordered vs.</description>
     </item>
     <item>
-      <title>Easy documentation with Docsy</title>
-      <link>http://localhost:1313/blog/2018/10/06/easy-documentation-with-docsy/</link>
-      <pubDate>Sat, 06 Oct 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2018/10/06/easy-documentation-with-docsy/</guid>
-      <description>This is a typical blog post that includes images.&#xA;The front matter specifies the date of the blog post, its title, a short description that will be displayed on the blog landing page, and its author.&#xA;Including images&#xD;Here&amp;rsquo;s an image (featured-sunset-get.png) that includes a byline and a caption.&#xA;Fetch and scale an image in the upcoming Hugo 0.43.&#xD;Photo: Riona MacNamara / CC-BY-CA The front matter of this post specifies properties to be assigned to all image resources:</description>
-    </item>
-    <item>
-      <title>Second blog post</title>
-      <link>http://localhost:1313/blog/2018/10/06/second-blog-post/</link>
-      <pubDate>Sat, 06 Oct 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2018/10/06/second-blog-post/</guid>
-      <description>Text can be bold, italic, or strikethrough. Links should be blue with no underlines (unless hovered over).&#xA;There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.&#xA;There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.&#xA;There should be no margin above this first sentence.</description>
-    </item>
-    <item>
-      <title>Another Great Release</title>
-      <link>http://localhost:1313/blog/2018/01/04/another-great-release/</link>
-      <pubDate>Thu, 04 Jan 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2018/01/04/another-great-release/</guid>
-      <description>Text can be bold, italic, or strikethrough. Links should be blue with no underlines (unless hovered over).&#xA;There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.&#xA;There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs. There should be whitespace between paragraphs.&#xA;There should be no margin above this first sentence.</description>
+      <title>Welcome to my portfolio site</title>
+      <link>http://localhost:1313/blog/2024/04/06/welcome-to-my-portfolio-site/</link>
+      <pubDate>Sat, 06 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2024/04/06/welcome-to-my-portfolio-site/</guid>
+      <description>I&amp;rsquo;m excited to introduce you to my personal portfolio website! As a technical writer with a passion for creating clear and concise documentation, this site serves as a showcase of my professional journey, skills, and accomplishments.&#xA;Built with Hugo and Hosted on GitHub Pages&#xD;I chose Hugo as the static site generator (SSG) for its speed, flexibility, and ease of use. Hugo allows me to quickly build and deploy a fast, secure, and reliable website without the need for a complex content management system.</description>
     </item>
     <item>
       <title>About Me</title>
