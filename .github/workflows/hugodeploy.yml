@@ -59,19 +59,19 @@ jobs:
           PASSWORD: ${{ secrets.STATICRYPT_PASSWORD }}
         run: |
           if [ -f "./public/docs/writing_samples/index.html" ]; then
-            echo $PASSWORD | yes y | staticrypt ./public/docs/writing_samples/index.html -m "Enter the password to view this page." --stdin
+            echo $PASSWORD | staticrypt ./public/docs/writing_samples/index.html -m "Enter the password to view this page." --stdin --short
             mv ./public/docs/writing_samples/index_encrypted.html ./public/docs/writing_samples/index.html
           fi
           if [ -f "./public/docs/writing_samples/rn_samples/index.html" ]; then
-            echo $PASSWORD | yes y | staticrypt ./public/docs/writing_samples/rn_samples/index.html -m "Enter the password to view this page." --stdin
+            echo $PASSWORD | staticrypt ./public/docs/writing_samples/rn_samples/index.html -m "Enter the password to view this page." --stdin --short
             mv ./public/docs/writing_samples/rn_samples/index_encrypted.html ./public/docs/writing_samples/rn_samples/index.html
           fi
           if [ -f "./public/docs/writing_samples/style_guide/index.html" ]; then
-            echo $PASSWORD | yes y | staticrypt ./public/docs/writing_samples/style_guide/index.html -m "Enter the password to view this page." --stdin
+            echo $PASSWORD | staticrypt ./public/docs/writing_samples/style_guide/index.html -m "Enter the password to view this page." --stdin --short
             mv ./public/docs/writing_samples/style_guide/index_encrypted.html ./public/docs/writing_samples/style_guide/index.html
           fi
           if [ -f "./public/docs/writing_samples/technical_guides/index.html" ]; then
-            echo $PASSWORD | yes y | staticrypt ./public/docs/writing_samples/technical_guides/index.html -m "Enter the password to view this page." --stdin
+            echo $PASSWORD | staticrypt ./public/docs/writing_samples/technical_guides/index.html -m "Enter the password to view this page." --stdin --short
             mv ./public/docs/writing_samples/technical_guides/index_encrypted.html ./public/docs/writing_samples/technical_guides/index.html
           fi
       - name: Upload artifact
