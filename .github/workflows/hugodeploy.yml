@@ -48,8 +48,7 @@ jobs:
           HUGO_ENV: production
           TZ: America/Los_Angeles
         run: |
-          echo '[outputs]' >> hugo.toml
-          echo 'section = ["HTML", "print"]' >> hugo.toml
+          sed -i '/\[outputs\]/!b;n;csection = ["HTML", "print"]' hugo.toml
           hugo \
             --gc \
             --minify \
