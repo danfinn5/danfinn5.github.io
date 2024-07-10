@@ -15,6 +15,13 @@
       <description>This section describes a series of Jira Automation Rules that can be used to&#xA;Problem Statement:&#xD;In Jira Cloud, each project has unique Release versions. There is no concept of a &amp;ldquo;shared&amp;rdquo; version across multiple projects.&#xA;However, you can use Jira&amp;rsquo;s Automation features along with some custom fields and a designated ticket to automatically create and assign common releases across multiple projects.&#xA;Example&#xD;You might need this if your company performs regular deployments of a group of software services, and the development teams that support those services each use different Jira projects.</description>
     </item>
     <item>
+      <title>Slack App</title>
+      <link>http://localhost:1313/docs/tools_and_scripts/slack_app/slack_app/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/tools_and_scripts/slack_app/slack_app/</guid>
+      <description>This section describes a series of Jira Automation Rules that can be used to&#xA;Problem Statement:&#xD;In Jira Cloud, each project has unique Release versions. There is no concept of a &amp;ldquo;shared&amp;rdquo; version across multiple projects.&#xA;However, you can use Jira&amp;rsquo;s Automation features along with some custom fields and a designated ticket to automatically create and assign common releases across multiple projects.&#xA;Example&#xD;You might need this if your company performs regular deployments of a group of software services, and the development teams that support those services each use different Jira projects.</description>
+    </item>
+    <item>
       <title>Technical Guides</title>
       <link>http://localhost:1313/docs/writing_samples/technical_guides/</link>
       <pubDate>Tue, 25 Jun 2024 00:00:00 +0000</pubDate>

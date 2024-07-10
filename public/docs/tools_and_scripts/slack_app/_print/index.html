@@ -3,8 +3,8 @@
   <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="canonical" type="text/html" href="http://localhost:1313/docs/tools_and_scripts/">
-<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/docs/tools_and_scripts/index.xml">
+<link rel="canonical" type="text/html" href="http://localhost:1313/docs/tools_and_scripts/slack_app/">
+<link rel="alternate" type="application/rss&#43;xml" href="http://localhost:1313/docs/tools_and_scripts/slack_app/index.xml">
 <meta name="robots" content="noindex, nofollow">
 
 
@@ -19,19 +19,18 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Tools and Scripts | </title>
-<meta name="description" content="This section contains some helpful tools and scripts I&#39;ve created.">
-<meta property="og:url" content="http://localhost:1313/docs/tools_and_scripts/">
+<title>Slack App | </title>
+<meta name="description" content="Create a Slack App that auto-creates, updates, and deletes channels based on actions taken in Jira tickets.">
+<meta property="og:url" content="http://localhost:1313/docs/tools_and_scripts/slack_app/">
   <meta property="og:site_name" content="Portfolio">
-  <meta property="og:title" content="Tools and Scripts">
-  <meta property="og:description" content="This section contains some helpful tools and scripts I&#39;ve created.">
+  <meta property="og:title" content="Slack App">
+  <meta property="og:description" content="Create a Slack App that auto-creates, updates, and deletes channels based on actions taken in Jira tickets.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="website">
 
-  <meta itemprop="name" content="Tools and Scripts">
-  <meta itemprop="description" content="This section contains some helpful tools and scripts I&#39;ve created.">
-  <meta itemprop="dateModified" content="2024-06-28T16:06:57-04:00"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Tools and Scripts">
-<meta name="twitter:description" content="This section contains some helpful tools and scripts I&#39;ve created.">
+  <meta itemprop="name" content="Slack App">
+  <meta itemprop="description" content="Create a Slack App that auto-creates, updates, and deletes channels based on actions taken in Jira tickets."><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Slack App">
+<meta name="twitter:description" content="Create a Slack App that auto-creates, updates, and deletes channels based on actions taken in Jira tickets.">
 
 
 
@@ -90,14 +89,14 @@
 This is the multi-page printable view of this section.
 <a href="#" onclick="print();return false;">Click here to print</a>.
 </p><p>
-<a href="/docs/tools_and_scripts/">Return to the regular view of this page</a>.
+<a href="/docs/tools_and_scripts/slack_app/">Return to the regular view of this page</a>.
 </p>
 </div>
 
 
 
-<h1 class="title">Tools and Scripts</h1>
-<div class="lead">This section contains some helpful tools and scripts I&rsquo;ve created.</div>
+<h1 class="title">Slack App</h1>
+<div class="lead">Create a Slack App that auto-creates, updates, and deletes channels based on actions taken in Jira tickets.</div>
 
 
 
@@ -113,74 +112,9 @@ This is the multi-page printable view of this section.
     
     
 	
-<li>1: <a href="#pg-e623b9ce07c34dc8e6a67202e0ff2de5">Jira Automation Rules</a></li>
+<li>1: <a href="#pg-e029ad1e968c2090e9ef3cefb003ac36">Slack App</a></li>
 
 
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-    
-    
-	
-<li>1.1: <a href="#pg-2e74612e4aa34dd5029698f4d2be4325">Jira Automation Rules</a></li>
-
-
-    
-  
-
-    </ul>
-    
-  
-    
-    
-	
-<li>2: <a href="#pg-df1f2921cb748580adf30a4d29940030">Slack App</a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-    
-    
-	
-<li>2.1: <a href="#pg-e029ad1e968c2090e9ef3cefb003ac36">Slack App</a></li>
-
-
-    
-  
-
-    </ul>
-    
-  
-    
-    
-	
-<li>3: <a href="#pg-ab3595db49f8346df15a81080b73366e"></a></li>
-
-
-    
-    <ul>
-        
-  
-  
-  
-  
-
-  
-
-    </ul>
     
   
 
@@ -209,100 +143,7 @@ This is the multi-page printable view of this section.
 
 <div class="td-content" style="">
     
-	<h1 id="pg-e623b9ce07c34dc8e6a67202e0ff2de5">1 - Jira Automation Rules</h1>
-    <div class="lead">This section contains explanations of some helpful Jira Automation Rules I&rsquo;ve created.</div>
-	
-</div>
-
-
-
-    
-      
-  
-  
-  
-  
-
-  
-  
-
-  
-    
-    
-	
-    
-
-<div class="td-content" style="">
-    
-	<h1 id="pg-2e74612e4aa34dd5029698f4d2be4325">1.1 - Jira Automation Rules</h1>
-    <div class="lead">This section contains some helpful tools and scripts I&rsquo;ve created.</div>
-	<p>This section describes a series of Jira Automation Rules that can be used to</p>
-<h3 id="problem-statement">Problem Statement:<a class="td-heading-self-link" href="#problem-statement" aria-label="Heading self-link"></a></h3>
-<p>In Jira Cloud, each project has unique <strong>Release</strong> versions. There is no concept of a &ldquo;shared&rdquo; version across multiple projects.</p>
-<p>However, you can use Jira&rsquo;s Automation features along with some custom fields and a designated ticket to automatically create and assign common releases across multiple projects.</p>
-<h3 id="example">Example<a class="td-heading-self-link" href="#example" aria-label="Heading self-link"></a></h3>
-<p>You might need this if your company performs regular deployments of a group of software services, and the development teams that support those services each use different Jira projects. This provides you with visibility into which tickets across multiple Jira projects are associated with a given deployment.</p>
-<h3 id="overview">Overview<a class="td-heading-self-link" href="#overview" aria-label="Heading self-link"></a></h3>
-<p>Implementing this solution involves several rules and custom fields. The following diagram provides an overview of how this works:</p>
-<p>This Jira automation rule is designed to automatically manage and set the next RT (Release Train) version for multiple projects on a biweekly schedule. Here&rsquo;s a breakdown of its main components and actions:</p>
-<p>Trigger: The rule is scheduled to run biweekly every Wednesday at noon (12:00 PM) Eastern Time. It checks for issues updated within the specified time frame.</p>
-<p>Conditions and Actions:</p>
-<p>Initial Check: It first checks if the current week of the year is an even week using a regular expression condition.
-Issue Selection: It specifically targets the issue with a specific issue key (e.g., DF-12345).
-Set Variable: It creates a variable LastRTVersion with the value of the fixVersions field from the targeted issue.
-Log and Release: It logs the LastRTVersion value and releases it across multiple projects (by project ID).</p>
-<p>Subsequent Actions:</p>
-<p>Next RT Version: The rule creates a new version for the next release train in a specific format RT{{now.plusWeeks(2).weekOfYearIso.format}}-{{now.plusWeeks(2).format(&ldquo;yy&rdquo;)}}:[{{now.plusDays(14).format(&ldquo;yy-MM-dd&rdquo;)}}].
-Update Fix Version: It sets the fixVersions field of the issue TD-2333 to this newly created version.
-Create Variable: A new variable nextRTversion is created with the new fixVersions value.
-Log and Create Versions: It logs nextRTversion and creates this version across the same set of projects mentioned earlier.
-Projects: The rule applies to multiple projects identified by their IDs (10286, 10268, 10222, 10276, 10274, 10275, 10198, 10246, 10294, 10281).</p>
-<p>In summary, this rule automates the process of setting and releasing new RT versions every two weeks, ensuring that the versioning across different projects is synchronized and up-to-date.</p>
-
-</div>
-
-
-
-    
-	
-  
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-df1f2921cb748580adf30a4d29940030">2 - Slack App</h1>
-    <div class="lead">Create a Slack App that auto-creates, updates, and deletes channels based on actions taken in Jira tickets.</div>
-	
-</div>
-
-
-
-    
-      
-  
-  
-  
-  
-
-  
-  
-
-  
-    
-    
-	
-    
-
-<div class="td-content" style="">
-    
-	<h1 id="pg-e029ad1e968c2090e9ef3cefb003ac36">2.1 - Slack App</h1>
+	<h1 id="pg-e029ad1e968c2090e9ef3cefb003ac36">1 - Slack App</h1>
     <div class="lead">.</div>
 	<p>This section describes a series of Jira Automation Rules that can be used to</p>
 <h3 id="problem-statement">Problem Statement:<a class="td-heading-self-link" href="#problem-statement" aria-label="Heading self-link"></a></h3>
@@ -330,39 +171,6 @@ Projects: The rule applies to multiple projects identified by their IDs (10286, 
 </div>
 
 
-
-    
-	
-  
-
-    
-	
-  
-    
-    
-	
-    
-
-<div class="td-content" style="page-break-before: always">
-    
-	<h1 id="pg-ab3595db49f8346df15a81080b73366e">3 - </h1>
-    
-	
-</div>
-
-
-
-    
-      
-  
-  
-  
-  
-
-  
-  
-
-  
 
     
 	
