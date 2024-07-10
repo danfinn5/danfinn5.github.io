@@ -29,7 +29,7 @@ jobs:
       - name: Install Hugo CLI
         run: |
           wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
-          && sudo dpkg -i ${{ runner.temp }}/hugo.deb          
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
       - name: Install Dart Sass
         run: sudo snap install dart-sass
       - name: Checkout
@@ -58,14 +58,22 @@ jobs:
         env:
           PASSWORD: ${{ secrets.STATICRYPT_PASSWORD }}
         run: |
-          echo $PASSWORD | staticrypt ./public/docs/writing_samples/index.html -m "Enter the password to view this page." --stdin
-          mv ./public/docs/writing_samples/_index_encrypted.html ./public/docs/writing_samples/index.html
-          echo $PASSWORD | staticrypt ./public/docs/writing_samples/rn_samples/index.html -m "Enter the password to view this page." --stdin
-          mv ./public/docs/writing_samples/rn_samples/index_encrypted.html ./public/docs/writing_samples/rn_samples/index.html
-          echo $PASSWORD | staticrypt ./public/docs/writing_samples/style_guide/index.html -m "Enter the password to view this page." --stdin
-          mv ./public/docs/writing_samples/style_guide/index_encrypted.html ./public/docs/writing_samples/style_guide/index.html
-          echo $PASSWORD | staticrypt ./public/docs/writing_samples/technical_guides/index.html -m "Enter the password to view this page." --stdin
-          mv ./public/docs/writing_samples/technical_guides/index_encrypted.html ./public/docs/writing_samples/technical_guides/index.html
+          if [ -f "./public/docs/writing_samples/index.html" ]; then
+            echo $PASSWORD | yes y | staticrypt ./public/docs/writing_samples/index.html -m "Enter the password to view this page." --stdin
+            mv ./public/docs/writing_samples/index_encrypted.html ./public/docs/writing_samples/index.html
+          fi
+          if [ -f "./public/docs/writing_samples/rn_samples/index.html" ]; then
+            echo $PASSWORD | yes y | staticrypt ./public/docs/writing_samples/rn_samples/index.html -m "Enter the password to view this page." --stdin
+            mv ./public/docs/writing_samples/rn_samples/index_encrypted.html ./public/docs/writing_samples/rn_samples/index.html
+          fi
+          if [ -f "./public/docs/writing_samples/style_guide/index.html" ]; then
+            echo $PASSWORD | yes y | staticrypt ./public/docs/writing_samples/style_guide/index.html -m "Enter the password to view this page." --stdin
+            mv ./public/docs/writing_samples/style_guide/index_encrypted.html ./public/docs/writing_samples/style_guide/index.html
+          fi
+          if [ -f "./public/docs/writing_samples/technical_guides/index.html" ]; then
+            echo $PASSWORD | yes y | staticrypt ./public/docs/writing_samples/technical_guides/index.html -m "Enter the password to view this page." --stdin
+            mv ./public/docs/writing_samples/technical_guides/index_encrypted.html ./public/docs/writing_samples/technical_guides/index.html
+          fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
