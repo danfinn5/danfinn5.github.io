@@ -60,27 +60,27 @@ jobs:
         run: |
           if [ -f "./public/docs/writing_samples/index.html" ]; then
             echo "Encrypting index.html"
-            staticrypt ./public/docs/writing_samples/index.html --password $PASSWORD -m "Enter the password to view this page." --short
+            staticrypt ./public/docs/writing_samples/index.html --password $PASSWORD -m "Enter the password to view this page." --short || echo "Failed to encrypt index.html"
             ls -l ./public/docs/writing_samples/
-            mv ./public/docs/writing_samples/index_encrypted.html ./public/docs/writing_samples/index.html
+            mv ./public/docs/writing_samples/index_encrypted.html ./public/docs/writing_samples/index.html || echo "Failed to move index_encrypted.html"
           fi
           if [ -f "./public/docs/writing_samples/rn_samples/index.html" ]; then
             echo "Encrypting rn_samples/index.html"
-            staticrypt ./public/docs/writing_samples/rn_samples/index.html --password $PASSWORD -m "Enter the password to view this page." --short
+            staticrypt ./public/docs/writing_samples/rn_samples/index.html --password $PASSWORD -m "Enter the password to view this page." --short || echo "Failed to encrypt rn_samples/index.html"
             ls -l ./public/docs/writing_samples/rn_samples/
-            mv ./public/docs/writing_samples/rn_samples/index_encrypted.html ./public/docs/writing_samples/rn_samples/index.html
+            mv ./public/docs/writing_samples/rn_samples/index_encrypted.html ./public/docs/writing_samples/rn_samples/index.html || echo "Failed to move rn_samples/index_encrypted.html"
           fi
           if [ -f "./public/docs/writing_samples/style_guide/index.html" ]; then
             echo "Encrypting style_guide/index.html"
-            staticrypt ./public/docs/writing_samples/style_guide/index.html --password $PASSWORD -m "Enter the password to view this page." --short
+            staticrypt ./public/docs/writing_samples/style_guide/index.html --password $PASSWORD -m "Enter the password to view this page." --short || echo "Failed to encrypt style_guide/index.html"
             ls -l ./public/docs/writing_samples/style_guide/
-            mv ./public/docs/writing_samples/style_guide/index_encrypted.html ./public/docs/writing_samples/style_guide/index.html
+            mv ./public/docs/writing_samples/style_guide/index_encrypted.html ./public/docs/writing_samples/style_guide/index.html || echo "Failed to move style_guide/index_encrypted.html"
           fi
           if [ -f "./public/docs/writing_samples/technical_guides/index.html" ]; then
             echo "Encrypting technical_guides/index.html"
-            staticrypt ./public/docs/writing_samples/technical_guides/index.html --password $PASSWORD -m "Enter the password to view this page." --short
+            staticrypt ./public/docs/writing_samples/technical_guides/index.html --password $PASSWORD -m "Enter the password to view this page." --short || echo "Failed to encrypt technical_guides/index.html"
             ls -l ./public/docs/writing_samples/technical_guides/
-            mv ./public/docs/writing_samples/technical_guides/index_encrypted.html ./public/docs/writing_samples/technical_guides/index.html
+            mv ./public/docs/writing_samples/technical_guides/index_encrypted.html ./public/docs/writing_samples/technical_guides/index.html || echo "Failed to move technical_guides/index_encrypted.html"
           fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
