@@ -48,6 +48,7 @@ jobs:
           HUGO_ENV: production
           TZ: America/Los_Angeles
         run: |
+          echo "disableKinds = ['rss']" >> config.toml
           hugo \
             --gc \
             --minify \
@@ -86,6 +87,8 @@ jobs:
             ls -l ./public/docs/writing_samples/technical_guides/
             rm ./public/docs/writing_samples/technical_guides/index.html || echo "Failed to remove original technical_guides/index.html"
           fi
+          echo "Directory structure after encryption:"
+          find ./public/docs/writing_samples
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
