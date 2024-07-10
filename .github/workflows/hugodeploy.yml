@@ -48,7 +48,8 @@ jobs:
           HUGO_ENV: production
           TZ: America/Los_Angeles
         run: |
-          echo "disableKinds = ['rss']" >> config.toml
+          echo '[outputs]' >> hugo.toml
+          echo 'section = ["HTML", "print"]' >> hugo.toml
           hugo \
             --gc \
             --minify \
@@ -64,28 +65,28 @@ jobs:
             staticrypt ./public/docs/writing_samples/index.html --password $PASSWORD -m "Enter the password to view this page." --short -d ./public/docs/writing_samples > encrypt_index.log 2>&1 || echo "Failed to encrypt index.html"
             cat encrypt_index.log
             ls -l ./public/docs/writing_samples/
-            rm ./public/docs/writing_samples/index.html || echo "Failed to remove original index.html"
+            mv ./public/docs/writing_samples/index.html ./public/docs/writing_samples/index_decrypted.html || echo "Failed to rename index.html"
           fi
           if [ -f "./public/docs/writing_samples/rn_samples/index.html" ]; then
             echo "Encrypting rn_samples/index.html"
             staticrypt ./public/docs/writing_samples/rn_samples/index.html --password $PASSWORD -m "Enter the password to view this page." --short -d ./public/docs/writing_samples/rn_samples > encrypt_rn_samples.log 2>&1 || echo "Failed to encrypt rn_samples/index.html"
             cat encrypt_rn_samples.log
             ls -l ./public/docs/writing_samples/rn_samples/
-            rm ./public/docs/writing_samples/rn_samples/index.html || echo "Failed to remove original rn_samples/index.html"
+            mv ./public/docs/writing_samples/rn_samples/index.html ./public/docs/writing_samples/rn_samples/index_decrypted.html || echo "Failed to rename rn_samples/index.html"
           fi
           if [ -f "./public/docs/writing_samples/style_guide/index.html" ]; then
             echo "Encrypting style_guide/index.html"
             staticrypt ./public/docs/writing_samples/style_guide/index.html --password $PASSWORD -m "Enter the password to view this page." --short -d ./public/docs/writing_samples/style_guide > encrypt_style_guide.log 2>&1 || echo "Failed to encrypt style_guide/index.html"
             cat encrypt_style_guide.log
             ls -l ./public/docs/writing_samples/style_guide/
-            rm ./public/docs/writing_samples/style_guide/index.html || echo "Failed to remove original style_guide/index.html"
+            mv ./public/docs/writing_samples/style_guide/index.html ./public/docs/writing_samples/style_guide/index_decrypted.html || echo "Failed to rename style_guide/index.html"
           fi
           if [ -f "./public/docs/writing_samples/technical_guides/index.html" ]; then
             echo "Encrypting technical_guides/index.html"
             staticrypt ./public/docs/writing_samples/technical_guides/index.html --password $PASSWORD -m "Enter the password to view this page." --short -d ./public/docs/writing_samples/technical_guides > encrypt_technical_guides.log 2>&1 || echo "Failed to encrypt technical_guides/index.html"
             cat encrypt_technical_guides.log
             ls -l ./public/docs/writing_samples/technical_guides/
-            rm ./public/docs/writing_samples/technical_guides/index.html || echo "Failed to remove original technical_guides/index.html"
+            mv ./public/docs/writing_samples/technical_guides/index.html ./public/docs/writing_samples/technical_guides/index_decrypted.html || echo "Failed to rename technical_guides/index.html"
           fi
           echo "Directory structure after encryption:"
           find ./public/docs/writing_samples
