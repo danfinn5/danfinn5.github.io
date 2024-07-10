@@ -58,7 +58,7 @@ jobs:
         env:
           PASSWORD: ${{ secrets.STATICRYPT_PASSWORD }}
         run: |
-          echo $PASSWORD | staticrypt ./public/docs/writing_samples/_index.html -m "Enter the password to view this page." --stdin
+          echo $PASSWORD | staticrypt ./public/docs/writing_samples/index.html -m "Enter the password to view this page." --stdin
           mv ./public/docs/writing_samples/_index_encrypted.html ./public/docs/writing_samples/index.html
           echo $PASSWORD | staticrypt ./public/docs/writing_samples/rn_samples/index.html -m "Enter the password to view this page." --stdin
           mv ./public/docs/writing_samples/rn_samples/index_encrypted.html ./public/docs/writing_samples/rn_samples/index.html
