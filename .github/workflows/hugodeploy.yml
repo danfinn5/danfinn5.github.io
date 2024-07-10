@@ -1,84 +1,26 @@
-name: Deploy Hugo site to Pages
+  mv ./public/docs/writing_samples/style_guide/index_encrypted.html ./public/docs/writing_samples/style_guide/index.html
+  echo $PASSWORD | staticrypt ./public/docs/writing_samples/technical_guides/index.html -m "Enter the password to view this page." --stdin
+  mv ./public/docs/writing_samples/technical_guides/index_encrypted.html ./public/docs/writing_samples/technical_guides/index.html
+  shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+  env:
+    HUGO_VERSION: 0.126.0
+    GITHUB_PAGES: true
+    PASSWORD: ***
+node:fs:1688
+  handleErrorFromBinding(ctx);
+  ^
 
-on:
-  push:
-    branches:
-      - main
+Error: ENOENT: no such file or directory, stat './public/docs/writing_samples/index.html'
+    at Object.statSync (node:fs:1688:3)
+    at /usr/local/lib/node_modules/staticrypt/cli/index.js:101:76
+    at Array.filter (<anonymous>)
+    at runStatiCrypt (/usr/local/lib/node_modules/staticrypt/cli/index.js:101:56) {
+  errno: -2,
+  syscall: 'stat',
+  code: 'ENOENT',
+  path: './public/docs/writing_samples/_index.html'
+}
 
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
-defaults:
-  run:
-    shell: bash
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    env:
-      HUGO_VERSION: 0.126.0
-    steps:
-      - name: Install Hugo CLI
-        run: |
-          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
-          && sudo dpkg -i ${{ runner.temp }}/hugo.deb          
-      - name: Install Dart Sass
-        run: sudo snap install dart-sass
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
-          fetch-depth: 0
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v4
-      - name: Install Node.js dependencies
-        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
-      - name: Build with Hugo
-        env:
-          HUGO_ENVIRONMENT: production
-          HUGO_ENV: production
-          TZ: America/Los_Angeles
-        run: |
-          hugo \
-            --gc \
-            --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
-      - name: Install staticrypt
-        run: npm install -g staticrypt
-      - name: Encrypt HTML files
-        env:
-          PASSWORD: ${{ secrets.STATICRYPT_PASSWORD }}
-        run: |
-          echo $PASSWORD | staticrypt ./public/docs/writing_samples/_index.html -m "Enter the password to view this page." --stdin
-          mv ./public/docs/writing_samples/_index_encrypted.html ./public/docs/writing_samples/_index.html
-          echo $PASSWORD | staticrypt ./public/docs/writing_samples/rn_samples/index.html -m "Enter the password to view this page." --stdin
-          mv ./public/docs/writing_samples/rn_samples/index_encrypted.html ./public/docs/writing_samples/rn_samples/index.html
-          echo $PASSWORD | staticrypt ./public/docs/writing_samples/style_guide/index.html -m "Enter the password to view this page." --stdin
-          mv ./public/docs/writing_samples/style_guide/index_encrypted.html ./public/docs/writing_samples/style_guide/index.html
-          echo $PASSWORD | staticrypt ./public/docs/writing_samples/technical_guides/index.html -m "Enter the password to view this page." --stdin
-          mv ./public/docs/writing_samples/technical_guides/index_encrypted.html ./public/docs/writing_samples/technical_guides/index.html
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./public
-
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+Node.js v18.20.3
+Enter your long, unusual password: 
+Error: Process completed with exit code 1.
