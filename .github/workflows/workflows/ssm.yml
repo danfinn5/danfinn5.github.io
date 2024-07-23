@@ -1,4 +1,4 @@
-name: Send Statuspage Maintenance Windows
+name: Generate Statuspage Maintenance Windows
 on:
   push:
     branches:
