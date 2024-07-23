@@ -1,0 +1,372 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Classic European Cars API",
+    "description": "Please note: This is a work in progress using Swagger Hub as a tool for creating the API spec and Hugo with Github Pages to serve the documentation. <br><br>This is a sample set of interactive documentaiton for an API that provides information about classic European cars, allowing users to manage their personal collections and contribute data. It uses OAuth2 Access Code Flow for security.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/DANFINN5/EuroClassics/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "security": [
+    {
+      "accessCode": [
+        "read",
+        "write"
+      ]
+    }
+  ],
+  "paths": {
+    "/cars": {
+      "get": {
+        "summary": "Retrieve a list of cars",
+        "description": "Retrieves a list of classic European cars. Supports filtering by make, model, year, or country.",
+        "parameters": [
+          {
+            "name": "make",
+            "in": "query",
+            "description": "Filter cars by make",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "model",
+            "in": "query",
+            "description": "Filter cars by model",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "description": "Filter cars by year of manufacture",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "description": "Filter cars by country of origin",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cars",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Car"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessCode": [
+              "read"
+            ]
+          }
+        ]
+      }
+    },
+    "/cars/{id}": {
+      "get": {
+        "summary": "Get detailed information about a specific car",
+        "description": "Retrieves detailed information about a specific classic European car.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The car ID",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detailed car information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Car"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessCode": [
+              "read"
+            ]
+          }
+        ]
+      }
+    },
+    "/collections": {
+      "get": {
+        "summary": "Retrieve all collections",
+        "description": "Lists all car collections created by the user.",
+        "responses": {
+          "200": {
+            "description": "A list of collections",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Collection"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessCode": [
+              "read"
+            ]
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create a new collection",
+        "description": "Allows a user to create a new car collection.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Collection"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Collection created"
+          }
+        },
+        "security": [
+          {
+            "accessCode": [
+              "write"
+            ]
+          }
+        ]
+      }
+    },
+    "/collections/{id}": {
+      "get": {
+        "summary": "Retrieve a specific collection",
+        "description": "Fetches a single collection by ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier of the collection",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Collection details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Collection"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "accessCode": [
+              "read"
+            ]
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update a collection",
+        "description": "Updates an existing collection.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier of the collection",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Collection"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Collection updated"
+          }
+        },
+        "security": [
+          {
+            "accessCode": [
+              "write"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Delete a collection",
+        "description": "Deletes a specific collection.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier of the collection",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Collection deleted"
+          }
+        },
+        "security": [
+          {
+            "accessCode": [
+              "write"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Car": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the car"
+          },
+          "make": {
+            "type": "string",
+            "description": "Manufacturer of the car"
+          },
+          "model": {
+            "type": "string",
+            "description": "Model of the car"
+          },
+          "year": {
+            "type": "integer",
+            "description": "Year of manufacture"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the car"
+          },
+          "history": {
+            "type": "string",
+            "description": "Historical background of the car"
+          }
+        }
+      },
+      "Collection": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the collection"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the collection"
+          },
+          "cars": {
+            "type": "array",
+            "description": "List of cars in the collection",
+            "items": {
+              "type": "string",
+              "description": "Car ID"
+            }
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the collection"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "accessCode": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "http://example.com/oauth/auth",
+            "tokenUrl": "http://example.com/oauth/token",
+            "scopes": {
+              "write": "allows modifying resources",
+              "read": "allows reading resources"
+            }
+          }
+        }
+      }
+    }
+  }
+}
