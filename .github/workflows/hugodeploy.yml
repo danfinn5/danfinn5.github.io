@@ -73,13 +73,6 @@ jobs:
             ls -l ./public/docs/writing_samples/rn_samples/
             mv ./public/docs/writing_samples/rn_samples/index_encrypted.html ./public/docs/writing_samples/rn_samples/index.html || echo "Failed to rename rn_samples/index.html"
           fi
-          if [ -f "./public/docs/writing_samples/style_guide/index.html" ]; then
-            echo "Encrypting style_guide/index.html"
-            staticrypt ./public/docs/writing_samples/style_guide/index.html --password $PASSWORD -m "Enter the password to view this page." --short -d ./public/docs/writing_samples/style_guide > encrypt_style_guide.log 2>&1 || echo "Failed to encrypt style_guide/index.html"
-            cat encrypt_style_guide.log
-            ls -l ./public/docs/writing_samples/style_guide/
-            mv ./public/docs/writing_samples/style_guide/index_encrypted.html ./public/docs/writing_samples/style_guide/index.html || echo "Failed to rename style_guide/index.html"
-          fi
           if [ -f "./public/docs/writing_samples/technical_guides/index.html" ]; then
             echo "Encrypting technical_guides/index.html"
             staticrypt ./public/docs/writing_samples/technical_guides/index.html --password $PASSWORD -m "Enter the password to view this page." --short -d ./public/docs/writing_samples/technical_guides > encrypt_technical_guides.log 2>&1 || echo "Failed to encrypt technical_guides/index.html"
