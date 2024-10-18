@@ -14,22 +14,22 @@ weight: 2
 
 
 ## Installation Guide
-This writing sample is a set of installation and configuration instructions for upgrading a software product for a major software release.  
+This writing sample is a set of installation and configuration instructions for an application that runs in Salesforce.  
 
 {{< pdf-viewer file="/pdfs/sf_installation_guide.pdf" >}}
 
-## Installation and Configuration Guide
-This writing sample is a set of installation and configuration instructions for upgrading a software product for a major software release.  
+## Installation and Setup Guide
+This writing sample is a set of installation and setup instructions for upgrading a software product to the latest version of a major software release.  
 
-{{< pdf-viewer file="/pdfs/patch_release_notes.pdf" >}}
+{{< pdf-viewer file="/pdfs/installation_guide.pdf" >}}
 
 ## Service Requirements
-This writing sample is a set of software and hardware requirements necessary for implementing a given software solution.
+This writing sample is an overview of networking, software, and hardware requirements necessary for implementing a software solution in different locations across the globe.
 {{< pdf-viewer file="/pdfs/service_requirements.pdf" >}}
 
 
 ## Administrator Guide
-This writing sample is an administrator guide for configuring a software application's integration with Salesforce.  
+This writing sample is a guide for administering an application that integrates with Salesforce.  
 
 {{< pdf-viewer file="/pdfs/sf_admin_guide.pdf" >}}
 
