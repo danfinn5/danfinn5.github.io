@@ -1,128 +1,110 @@
 ---
-title: Slack Channel Auto-Creation
+title: Auto-Create Slack Channels for Jira tickets
 hasMermaid: "true"
 description: Integrate Jira and Slack to auto-create and populate Slack channels with data from Jira tickets. 
 weight: 6
 ---
 
-Using this integration you can create a Slack App and a series of Automation rules in Jira to automatically create and populate Slack channels with data directly for Jira tickets. Slack Channel names and key details are also automatically updated if they change in Jira, and are automatically archived based on attributes like ticket status or schedules.
+![Alt text](/images/slack/hq720.jpg)
 
-### Example
-For example, your organization performs regular productiondeployments of microservices, and the development teams that support those services each use different Jira projects, and deployments can take place at any time.
+## Table of Contents
+1. [Example Use Case](#example-use-case)
+2. [Overview](#overview)
+3. [Jira Automation Rules](#jira-automation-rules)
+   - [Rule 1: Slack Channel Creation](#rule-1-slack-channel-creation)
+   - [Rule 2: Slack Channel Updates](#rule-2-slack-channel-updates)
+   - [Rule 3: Slack Channel Archive](#rule-3-slack-channel-archive)
+4. [Diagram](#diagram)
+5. [Prerequisites](#prerequisites)
+6. [Steps](#steps)
+   - [Step 1: Create the Slack App](#step-1-create-the-slack-app)
+   - [Step 2: Create Jira Automation Rules](#step-2-create-jira-automation-rules)
+   - [Step 3: Customize the Rules](#step-3-customize-the-rules)
 
-This automaiton allows engineers, product teams, and external teams to effortlessly create, update, and archive Slack Channels for any communications that need to take place related to those deployments.  
+---
 
-This is especially helpful in environments where deployments occur frequently, and may require coordination for things like testing or downtime in client-specific environments. 
+## Use Case
+For this Jira and Slack App integration, consider a scenario in which your organization performs regular deployments of microservices, and each development team uses different Jira projects. Each deployment must have a dedicated Slack channel assocaited with it that references the deployment ticket, as well as key details of the ticket and deployment. This automation streamlines the process of creating each Slack channel, populating detals about the ticket, and even automatically updating the channel if the ticket changes.
 
-### Overview
+## Overview
+To implement this solution, you'll need to:
+1. Create a Slack App to receive data from Jira.
+2. Set up at least three Jira Automation rules:
+   - Create a Slack channel when a Jira ticket is updated with specific data.
+   - Update the Slack channel when details in the Jira ticket change.
+   - Archive the Slack channel when the Jira ticket is marked as complete.
 
-Implementing this solution requires creating a Slack App to receive data from Jira. Additionally, you will need to create a minimum of three Automation rules. 
+## Jira Automation Rules
 
-At a high level, the automation works as follows: 
+### Rule 1: Slack Channel Creation
+- **Trigger**: When a custom field in Jira is set.
+- **Actions**:
+  - Check if required fields (e.g., summary, priority, client) are filled.
+  - If fields are incomplete, revert the trigger and notify the user.
+  - Once fields are filled, send a request to the Slack API to create a new channel with details from the Jira ticket.
+  - Save the Slack channel ID and timestamp back into the Jira ticket.
 
-#### Jira Rules
-**Rule 1: Auto-Create Slack Channel** - When this rule is triggered by setting a specific value within a custom field in Jira, this rule runs a series of checks to ensure that **Summary**, **Priority**, **Client**, **Due Date** and **Deployment Details** fields are populated. If they are not, the rule automatically reverts the trigger field, and @ mentions the user in a message within the ticket, listing out which fields must be populated in order to create the channel. 
+### Rule 2: Slack Channel Updates
+- **Trigger**: When fields in the Jira ticket (e.g., summary, due date) are updated.
+- **Actions**:
+  - Verify if a Slack channel ID exists in the Jira ticket.
+  - Send updated details to the Slack API to update the channel’s name and information.
+  - Save the updated timestamp in the Jira ticket.
 
-Once the user has populated those fields, they can set the trigger field again, which retrieves the data from the required fields in the Jira ticket, and sends them in a web request step to the Slack API to create the slack channel, and populate the name with key details from the Jira ticket. It also adds a message in the channel, and sends the Channel ID and channel creation Timestamp back to Jira to be written in a read-only field within the associated Jira ticket.
+### Rule 3: Slack Channel Archive
+- **Trigger**: When a Jira ticket status moves to "Done" or on a predefined schedule.
+- **Actions**:
+  - Retrieve the Slack channel ID from the Jira ticket.
+  - Send a request to the Slack API to archive the channel.
+  - Log the Slack response for future reference.
 
-**Rule 2: Auto-Update Slack Channel** - This rule is triggered when any of the **Summary**, **Priority**, **Client**, **Due Date** and **Deployment Details** fields are updated for any ticket in the group of Jira Projects assocaited with this rule. The rule checks if the **Slack Channel ID** field is popualted with a Channel ID and Timestamp. If it is, then the rule sets the values of the aforementioned fields as variables, and compiles them into a web request. That web request is then sent to the Slack Channel Updates endpoint with the associated Channel ID and Timestamp to identify the appropriate channel. The key details in the channel are successfully updated. 
-
-The rule then retrieves the updated timestamp in the web response received from Slack and overwrites the existing timestamp in the read-only field within the ticket. This maintains the link between the Jira ticket and the Slack Channel for subsequent updates.
-
-**Rule 3: Archive Channel** - This rule can be triggered on a schedule, or can be triggered when the Status of any ticket within the associated projects moves to a Done (complete, canceled, done, etc) state.
-
-When triggered, this rule simply retrieves the Channel ID and Timestamp from the associated ticket, and sends it in a web request to the Slack API Channel Archive endpoint to archive the channel. It then logs the response from Slack in case it is needed for future reference.
-
-The following diagram provides an overview of the workflow: 
+## Channel Creation Flow Diagram
 
 ```mermaid
 flowchart TD
-  JiraTicket{"Jira Ticket with Summary, Priority, Client, Due Date, Deployment Details"}
-  Rule1Trigger{"Trigger: Set Custom Field"}
-  CheckSummary{"Check if Summary is Populated"}
-  CheckPriority{"Check if Priority is Populated"}
-  CheckClient{"Check if Client is Populated"}
-  CheckDueDate{"Check if Due Date is Populated"}
-  CheckDeploymentDetails{"Check if Deployment Details are Populated"}
-  Rule1Revert{"Revert Trigger Field & Notify User of Missing Fields"}
-  AllFieldsPopulated{"All Fields Populated"}
-  SendDataToSlack("Send Data to Slack API: {Summary, Priority, Client, Due Date, Deployment Details}")
-  CreateSlackChannel{"Create Slack Channel with Data"}
-  PostChannelIDToJira{"Post Channel ID & Timestamp to Jira Ticket"}
-
-  Rule2Trigger{"Trigger: Update of Summary, Priority, Client, Due Date, or Deployment Details"}
-  CheckSlackChannelID{"Check if Slack Channel ID is Present"}
-  PrepareSlackUpdateRequest{"Prepare Update Request with Updated Fields"}
-  SendUpdateToSlack("Send Update to Slack API with Channel ID")
-  UpdateSlackChannel("Update Slack Channel with New Data")
-  UpdateTimestampInJira("Update Timestamp in Jira Ticket")
-
-  Rule3Trigger{"Trigger: Ticket Status Moves to Done"}
-  RetrieveChannelIDTimestamp{"Retrieve Slack Channel ID & Timestamp from Jira"}
-  ArchiveSlackChannel{"Send Archive Request to Slack API"}
-  LogSlackResponse{"Log Archive Response from Slack"}
-
-  JiraTicket-->Rule1Trigger
-  Rule1Trigger-->CheckSummary
-  Rule1Trigger-->CheckPriority
-  Rule1Trigger-->CheckClient
-  Rule1Trigger-->CheckDueDate
-  Rule1Trigger-->CheckDeploymentDetails
-  CheckSummary-->|"Not Populated"|Rule1Revert
-  CheckPriority-->|"Not Populated"|Rule1Revert
-  CheckClient-->|"Not Populated"|Rule1Revert
-  CheckDueDate-->|"Not Populated"|Rule1Revert
-  CheckDeploymentDetails-->|"Not Populated"|Rule1Revert
-  CheckSummary-->|"Populated"|AllFieldsPopulated
-  CheckPriority-->|"Populated"|AllFieldsPopulated
-  CheckClient-->|"Populated"|AllFieldsPopulated
-  CheckDueDate-->|"Populated"|AllFieldsPopulated
-  CheckDeploymentDetails-->|"Populated"|AllFieldsPopulated
-  AllFieldsPopulated-->SendDataToSlack
-  SendDataToSlack-->CreateSlackChannel
-  CreateSlackChannel-->PostChannelIDToJira
-  PostChannelIDToJira-->Rule2Trigger
-
-  Rule2Trigger-->CheckSlackChannelID
-  CheckSlackChannelID-->|"ID Present"|PrepareSlackUpdateRequest
-  PrepareSlackUpdateRequest-->SendUpdateToSlack
-  SendUpdateToSlack-->UpdateSlackChannel
-  UpdateSlackChannel-->UpdateTimestampInJira
-  UpdateTimestampInJira-->Rule2Trigger
-
-
-  Rule3Trigger-->RetrieveChannelIDTimestamp
-  RetrieveChannelIDTimestamp-->ArchiveSlackChannel
-  ArchiveSlackChannel-->LogSlackResponse
+  Jira_Ticket_Trigger --> Check_Fields
+  Check_Fields --> Send_To_Slack --> Create_Channel --> Save_Data_To_Jira
+  Channel_Fields_Change --> Update_Fields --> Send_Update_To_Slack --> Update_Channel
+  Jira_Ticket_Completed --> Archive_Channel --> Log_Response
 ```
 
 ## Prerequisites
-You need at least the following permissions to implement this solution: 
-- Jira Administrator role - This is required for creating Jira Automation rules with a multi-project scope, custom fields in Jira, and also to generate security keys to access the Jira Applicaiton Programming Interface (API).
-- A Slack user account - A standard Slack user account in your organization's workspace is required so that to access Slack App creation tools.
+To follow this guide, ensure you have:
+- **Jira Administrator permissions** to create automation rules.
+- A **Slack account** to create a Slack App.
+- Familiarity with [Jira Automation](https://support.atlassian.com/cloud-automation/docs/jira-cloud-automation/) and basic [REST API](https://aws.amazon.com/what-is/api/) concepts.
 
-Prior knowledge of [Jira Automation rules](https://support.atlassian.com/cloud-automation/docs/jira-cloud-automation/), [Smart Values](https://support.atlassian.com/cloud-automation/docs/smart-values-in-jira-automation/), [Regular Expressions](https://www.regular-expressions.info/), and basic [REST API](https://aws.amazon.com/what-is/api/#:~:text=APIs%20are%20mechanisms%20that%20enable,weather%20updates%20on%20your%20phone.) usage is strongly recommended.
+## Steps
 
+### Step 1: Create the Slack App
+1. Go to the [Slack API](https://api.slack.com/apps) dashboard and click "Create New App."
+2. Follow the instructions to create a new app and give it the necessary permissions to handle incoming requests from Jira.
+3. Under the "OAuth & Permissions" section, configure the following permissions:
+   - `channels:manage` - To create, update, and archive channels.
+   - `chat:write` - To post messages to the channel.
+   - `channels:read` - To read channel information.
+4. Generate OAuth tokens that will be used in your Jira Automation rules.
 
+### Step 2: Create Jira Automation Rules
+1. In your Jira project, navigate to **Project Settings** > **Automation**.
+2. Click on "Create Rule" and configure Rule 1: Slack Channel Creation:
+   - Set the trigger as a field update (e.g., a custom field like "Create Slack Channel").
+   - Add a condition to check if required fields (e.g., summary, priority) are filled.
+   - Set up an action to send a request to the Slack API to create the channel.
+   - Store the Slack channel ID and timestamp in Jira.
+   
+3. Create Rule 2: Slack Channel Updates:
+   - Trigger the rule when certain fields (e.g., summary, priority) are updated.
+   - Send an update request to the Slack API with the new information.
 
-<br>
+4. Create Rule 3: Slack Channel Archive:
+   - Trigger the rule when the Jira ticket is marked as "Done" or on a scheduled basis.
+   - Send a request to Slack to archive the channel.
 
-{{< alert type="info" heading="Work In Progress">}}
-More content about each of sections below is forthcoming.
-{{< /alert >}}
+### Step 3: Customize the Rules
+1. If you have specific requirements (e.g., prevent auto-creation when cloning tickets or push updates to write-protected fields), you can add additional rules or conditions.
+2. Test your automation by creating a test Jira ticket and ensuring the correct Slack channels are created, updated, and archived as expected.
 
-## Create the Slack App
+---
 
-## Create the Jira Automation Rules
-
-### Rule 1: Slack Channel Creation
-
-### Rule 2: Slack Channel Updates
-
-### Rule 3: Slack Channel Archive
-
-### Other Recommended Rules
-
-#### Prevent Auto-Creation on Clone
-
-#### Push updates to write-protected fields
+This guide provides a detailed overview of how to integrate Jira with Slack to automate Slack channel management based on Jira ticket actions.

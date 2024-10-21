@@ -42,7 +42,7 @@ This API uses **OAuth2 Authorization Code Flow** for secure access. You will nee
    ```
 
 2. **Receive Authorization Code**  
-   After a successful login, the user will be redirected to your redirect URI with an authorization code.
+   After a successful login, you are redirected to your redirect URI with an authorization code.
 
 3. **Exchange Authorization Code for Access Token**  
    Make a `POST` request to the token URL to exchange the authorization code for an access token:
