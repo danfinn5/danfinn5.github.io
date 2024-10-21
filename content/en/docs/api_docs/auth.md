@@ -1,21 +1,21 @@
 ---
 title: "Authentication"
 weight: 3
-description: "Detailed explanation of OAuth2 authentication for the API."
+description: "OAuth2 authentication information for the Euro Classics API."
 ---
 
-This API uses **OAuth2 Authorization Code Flow** for secure access to API endpoints. OAuth2 is an industry-standard protocol for authorization, which provides temporary tokens to allow clients to access resources securely.
+The Euro Classics API uses **OAuth2 Authorization Code Flow** for secure access to API endpoints. OAuth2 is an industry-standard protocol for authorization, which provides temporary tokens to allow clients to access resources securely.
 
 ## OAuth2 Flow
 
 1. **Authorization Request**  
-   Direct the user to the following URL to log in and grant access to their account:
+   Navigate to the following authentication URL to log in or create an account and obtain an access token:
    ```plaintext
    GET http://example.com/oauth/auth
    ```
 
 2. **Receive Authorization Code**  
-   After login, the user will be redirected with an authorization code, which needs to be exchanged for an access token.
+   After login, you are redirected with an authorization code, which needs to be exchanged for an access token.
 
 3. **Exchange Authorization Code for Access Token**  
    Use the following POST request to obtain an access token:
