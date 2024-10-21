@@ -4,8 +4,6 @@ weight: 7
 description: "Frequently asked questions about the Classic European Cars API."
 ---
 
-## FAQ
-
 This section answers some of the most frequently asked questions about the Classic European Cars API.
 
 ## How do I get an OAuth2 token?

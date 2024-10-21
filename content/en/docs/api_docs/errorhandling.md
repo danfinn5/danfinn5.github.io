@@ -4,8 +4,6 @@ weight: 5
 description: "Common errors and how to resolve them."
 ---
 
-## Error Handling
-
 This section provides guidance on common errors you may encounter when using the API and how to resolve them.
 
 ## Common HTTP Status Codes
