@@ -1,8 +1,8 @@
 ---
-title: Auto-Create Slack Channels for Jira tickets
+title: Auto-Create Slack Channels from Jira tickets
 hasMermaid: "true"
 description: Integrate Jira and Slack to auto-create and populate Slack channels with data from Jira tickets. 
-weight: 6
+weight: 2
 ---
 
 ![Alt text](/images/slack/hq720.jpg)
@@ -104,7 +104,3 @@ To follow this guide, ensure you have:
 ### Step 3: Customize the Rules
 1. If you have specific requirements (e.g., prevent auto-creation when cloning tickets or push updates to write-protected fields), you can add additional rules or conditions.
 2. Test your automation by creating a test Jira ticket and ensuring the correct Slack channels are created, updated, and archived as expected.
-
----
-
-This guide provides a detailed overview of how to integrate Jira with Slack to automate Slack channel management based on Jira ticket actions.
