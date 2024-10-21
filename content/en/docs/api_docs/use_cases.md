@@ -4,8 +4,6 @@ weight: 6
 description: "Examples of how to use the API for different workflows."
 ---
 
-## Example API Workflows
-
 Here are some common use cases for the Classic European Cars API.
 
 ## Create a Collection

@@ -4,8 +4,6 @@ weight: 3
 description: "Detailed explanation of OAuth2 authentication for the API."
 ---
 
-## Authentication
-
 This API uses **OAuth2 Authorization Code Flow** for secure access to API endpoints. OAuth2 is an industry-standard protocol for authorization, which provides temporary tokens to allow clients to access resources securely.
 
 ## OAuth2 Flow
