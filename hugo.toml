@@ -158,13 +158,13 @@ no = 'Sorry to hear that. Please <a href="https://github.com/USERNAME/REPOSITORY
 [params.ui.readingtime]
 enable = false
 
-[params.links]
-# End user relevant links. These will show up on left side of footer and in the community page if you have one.
-[[params.links.user]]
-  name = "User mailing list"
-  url = "mailto:danfinn5@gmail.com"
-  icon = "fa fa-envelope"
-  desc = "Send me an email"
+# [params.links]
+# # End user relevant links. These will show up on left side of footer and in the community page if you have one.
+# [[params.links.user]]
+#   name = "User mailing list"
+#   url = "mailto:danfinn5@gmail.com"
+#   icon = "fa fa-envelope"
+#   desc = "Send me an email"
 # [[params.links.user]]
 #   name ="Twitter"
 #   url = "https://www.linkedin.com/in/danielrfinn/"
@@ -175,22 +175,27 @@ enable = false
 #   url = "https://example.org/stack"
 #   icon = "fab fa-stack-overflow"
 #   desc = "Practical questions and curated answers"
+# [[params.links.user]]
+#   name = "GitHub"
+#   url = "https://github.com/danfinn5"
+#   icon = "fab fa-github"
+#   desc = "Development takes place here!"
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
-[[params.links.developer]]
-  name = "GitHub"
-  url = "https://github.com/danfinn5"
-  icon = "fab fa-github"
-  desc = "Development takes place here!"
+# [[params.links.developer]]
+#   name = "GitHub"
+#   url = "https://github.com/danfinn5"
+#   icon = "fab fa-github"
+#   desc = "Development takes place here!"
 # [[params.links.developer]]
 #   name = "Slack"
 #   url = "https://example.org/slack"
 #   icon = "fab fa-slack"
 #   desc = "Chat with other project developers"
-[[params.links.developer]]
-  name = "Developer mailing list"
-  url = "mailto:danfinn5@gmail.com"
-  icon = "fa fa-envelope"
-  desc = "Discuss development issues around the project"
+# [[params.links.developer]]
+#   name = "Developer mailing list"
+#   url = "mailto:danfinn5@gmail.com"
+#   icon = "fa fa-envelope"
+#   desc = "Discuss development issues around the project"
 
 # hugo module configuration
 
