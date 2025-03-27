@@ -164,12 +164,12 @@ enable = false
   name = "User mailing list"
   url = "mailto:danfinn5@gmail.com"
   icon = "fa fa-envelope"
-  desc = "Discussion and help from your fellow users"
-[[params.links.user]]
-  name ="Twitter"
-  url = "https://www.linkedin.com/in/danielrfinn/"
-  icon = "fab fa-linkedin"
-  desc = "See more about me on linkedin"
+  desc = "Send me an email"
+# [[params.links.user]]
+#   name ="Twitter"
+#   url = "https://www.linkedin.com/in/danielrfinn/"
+#   icon = "fab fa-linkedin"
+#   desc = "See more about me on linkedin"
 # [[params.links.user]]
 #   name = "Stack Overflow"
 #   url = "https://example.org/stack"
