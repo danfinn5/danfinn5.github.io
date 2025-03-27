@@ -13,7 +13,7 @@ Personal summary and resume
 {{% blocks/section %}}
 
 #### Daniel R. Finn
-Somerville, MA • (978) 987 7694 • danfinn5@gmail.com • [www.linkedin.com/in/danielrfinn](www.linkedin.com/in/danielrfinn)
+Somerville, MA • (978) 987 7694 • danfinn5@gmail.com • www.linkedin.com/in/danielrfinn
 
 ## Personal Summary
 I am a seasoned technical writer with over ten years of expereince documenting complex software products in dynamic and demanding environments. I have a demonstrated ability to drive strategy, lead teams, and collaborate cross-functionally to deliver high-quality documentation for multiple audiences.
