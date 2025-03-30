@@ -5,9 +5,7 @@ description: Integrate Jira and Slack to auto-create and populate Slack channels
 weight: 2
 ---
 
-![Alt text](/images/slack/hq720.jpg)
-
-test
+![Slack power plug graphic header image](/images/slack/hq720.jpg)
 
 ## Table of Contents
 1. [Example Use Case](#example-use-case)
