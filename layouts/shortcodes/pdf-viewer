@@ -1,0 +1,5 @@
+<!-- layouts/shortcodes/pdf-viewer.html -->
+<div>
+    <h2>{{ .Get "title" }}</h2>
+    <iframe src="/pdfjs/web/viewer.html?file={{ .Get "file" }}" width="60%" height="900px" style="border: solid; margin-bottom: 30px;"></iframe>
+</div>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ .Title }}</title>
+    <script>
+        console.log("Loading password-protection.js script...");
+    </script>
+    <script src="/js/password-protection.js"></script>
+</head>
+<body onload="checkPassword()">
+    <script>
+        console.log("Body onload event triggered...");
+    </script>
+    <div id="wrongPassword" style="display: none; color: red;">Wrong password. Please refresh the page and try again.</div>
+    <div id="protectedContent" style="display: none;">
+        {{ .Content }}
+    </div>
+</body>
+</html>

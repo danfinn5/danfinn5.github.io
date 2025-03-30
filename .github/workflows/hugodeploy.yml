@@ -1,0 +1,100 @@
+name: Deploy Hugo site to Pages
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.126.0
+    steps:
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+      - name: Install Dart Sass
+        run: sudo snap install dart-sass
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v4
+      - name: Install Node.js dependencies
+        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      - name: Build with Hugo
+        env:
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+          TZ: America/Los_Angeles
+        run: |
+          sed -i '/\[outputs\]/!b;n;csection = ["HTML", "print"]' hugo.toml
+          hugo \
+            --gc \
+            --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"
+      - name: Install staticrypt
+        run: npm install -g staticrypt
+      - name: Encrypt HTML files
+        env:
+          PASSWORD: ${{ secrets.STATICRYPT_PASSWORD }}
+        run: |
+          if [ -f "./public/docs/writing_samples/index.html" ]; then
+            echo "Encrypting index.html"
+            staticrypt ./public/docs/writing_samples/index.html --password $PASSWORD -m "Enter the password to view this page." --short -d ./public/docs/writing_samples > encrypt_index.log 2>&1 || echo "Failed to encrypt index.html"
+            cat encrypt_index.log
+            ls -l ./public/docs/writing_samples/
+            mv ./public/docs/writing_samples/index_encrypted.html ./public/docs/writing_samples/index.html || echo "Failed to rename index.html"
+          fi
+          if [ -f "./public/docs/writing_samples/rn_samples/index.html" ]; then
+            echo "Encrypting rn_samples/index.html"
+            staticrypt ./public/docs/writing_samples/rn_samples/index.html --password $PASSWORD -m "Enter the password to view this page." --short -d ./public/docs/writing_samples/rn_samples > encrypt_rn_samples.log 2>&1 || echo "Failed to encrypt rn_samples/index.html"
+            cat encrypt_rn_samples.log
+            ls -l ./public/docs/writing_samples/rn_samples/
+            mv ./public/docs/writing_samples/rn_samples/index_encrypted.html ./public/docs/writing_samples/rn_samples/index.html || echo "Failed to rename rn_samples/index.html"
+          fi
+          if [ -f "./public/docs/writing_samples/technical_guides/index.html" ]; then
+            echo "Encrypting technical_guides/index.html"
+            staticrypt ./public/docs/writing_samples/technical_guides/index.html --password $PASSWORD -m "Enter the password to view this page." --short -d ./public/docs/writing_samples/technical_guides > encrypt_technical_guides.log 2>&1 || echo "Failed to encrypt technical_guides/index.html"
+            cat encrypt_technical_guides.log
+            ls -l ./public/docs/writing_samples/technical_guides/
+            mv ./public/docs/writing_samples/technical_guides/index_encrypted.html ./public/docs/writing_samples/technical_guides/index.html || echo "Failed to rename technical_guides/index.html"
+          fi
+          echo "Directory structure after encryption:"
+          find ./public/docs/writing_samples
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

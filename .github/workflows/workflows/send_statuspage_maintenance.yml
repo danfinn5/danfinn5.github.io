@@ -1,0 +1,84 @@
+name: Send Statuspage Maintenance Windows
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '**/Window_Times.json'
+
+jobs:
+  send_requests: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: setup python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.9 # install Python dependencies. 
+  
+      - name: checkout repo content
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: execute py script
+        run: python ./src/schedule/statuspage.py send
+        env: 
+          TOKEN: ${{ secrets.STATUSPAGE_TOKEN }}
+
+      - name: Generate RT name
+        id: generate-rt-name
+        run: |
+          adjustedWeekOfYear=$(printf "%02d" $(( 1+ 10#$(date +'%U') )))
+          RT_DATE=$(date -d "+7 days" +"%y-%m-%d")
+          RT_VER=$(date +"RT$adjustedWeekOfYear-%y")
+          RT_VER="${RT_VER}"
+          echo "RT_VER=$RT_VER" >> $GITHUB_ENV
+          echo "RT_DATE=$RT_DATE" >> $GITHUB_ENV
+
+      - name: get-ticket
+        if: always()
+        uses: DanielHilton/jira-jql-search@v0.1.0
+        id: results
+        with:
+            jql: 'project = PROD and type = "Dev Task" and summary ~ "RT Cut and Scheduled Maintenance for ${{ env.RT_NAME }}" and Status in (Backlog, "Selected To Do", "Analysis", "Analysis Done", Code)'
+            fields: Key
+        env:
+            JIRA_HOST: ${{ secrets.JIRA_HOST }}
+            JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+            JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+
+      - name: jira ticket number
+        id: ticketnum
+        run: |
+          JIRA_KEY=$(echo '${{ steps.results.outputs.issueData }}' | jq -r '.issues[0].key')
+          echo "ticket-num=$JIRA_KEY" >> $GITHUB_ENV
+          echo "issue key is ${JIRA_KEY}"
+      
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v4
+        with:
+            add-paths: ./INCIDENTS/RT*.yaml
+            token: ${{ secrets.TAKEOFFBOT_TOKEN }}
+            commit-message: Scheduled Maintenance event uuids
+            committer: 'takeoffbot <takeoffbot@takeoff.com>'
+            author: 'takeoffbot <takeoffbot@takeoff.com>'
+            signoff: false
+            branch: feature/${{ env.ticket-num }}-${{ env.RT_VER }}-uuids
+            base: master
+            title: 'Statuspage maintenance UUIDs for ${{ env.RT_VER }}:[${{ env.RT_DATE }}]'
+            body: |
+              Incident file to be used to close out deployment once complete ${{ env.RT_NAME }}.
+  
+  slack-notification:
+    needs: send_requests
+    uses: takeoff-com/release-train-management/.github/workflows/slack-send-message.yaml@master
+    with:
+      body: "Sent Scheduled Maintenance Windows to Statuspage"
+    secrets:
+      SLACK_WEBHOOK_URL: ${{ secrets.RNS_REVIEW_WEBHOOK_URL  }}         
