@@ -1,6 +1,6 @@
 # Automated Release Notes
 
-This repo is used to automatically generate release notes from Jira and publish them to Zendesk using GitHub Actions workflows.
+This workflow describes how to implement automatically-generated release notes from Jira and publish them to Zendesk using GitHub Actions workflows, python, and the Jira and Zendesk APIs.
 
 ## Overview
 
@@ -11,8 +11,32 @@ Publishing is handled via GitHub Actions, with scheduled jobs, Slack notificatio
 There is a one-business-day SLA for review and publishing.
 
 ## Automation Workflow
+The following diagram provides an overview of the full workflow: 
 
-The automation is orchestrated using **GitHub Actions**. The core workflow, [`ZD_html_to_dict.yml`](https://github.com/takeoff-com/release-notes/blob/master/.github/workflows/ZD_html_to_dict.yml), runs on a **cron schedule**:
+```mermaid
+graph TD
+    A[Jira Issues<br>Release Notes Required = Yes - Ready to Publish] --> B[GitHub Actions<br>ZD_html_to_dict.yml]
+    B --> C[Fetch Zendesk Article<br>data/zendesk_data.html]
+    B --> D[Query Jira<br>data/jira_data_temp.json]
+    D --> E[jira_issue.py<br>Parse & structure Jira data]
+    C --> F[html_to_dict.py<br>Parse HTML into dict]
+    E --> G[union_data.py<br>Merge Jira + Zendesk data]
+    F --> G
+    G --> H[release_notes_builder.py<br>Build release_notes_zendesk.html]
+    H --> I[GitHub Pull Request]
+    I --> J[Slack Notification<br>Technical Documentation Team]
+    I --> K{Approved & Merged?}
+    K -- Yes --> L[GitHub Actions<br>send_to_zd.yml]
+    L --> M[html_to_json.py<br>Convert HTML to JSON]
+    M --> N[Publish to Zendesk API]
+
+    style A fill:#f9f,stroke:#333,stroke-width:1px
+    style N fill:#9f9,stroke:#333,stroke-width:1px
+    style J fill:#ccf,stroke:#333,stroke-width:1px
+```
+
+### Trigger
+The automation is orchestrated using **GitHub Actions**. The core workflow runs on a **cron schedule**:
 
 ```yaml
 on:
@@ -74,7 +98,7 @@ on:
 
 You can trigger the full workflow manually using **Workflow Dispatch**:
 
-1. In GitHub Actions, open the [`ZD_html_to_dict.yml`](https://github.com/takeoff-com/release-notes/blob/master/.github/workflows/ZD_html_to_dict.yml) workflow.
+1. In GitHub Actions, open the workflow.
 2. Select "Run workflow" and provide any optional inputs.
 3. After the PR is merged, publishing will proceed automatically via `send_to_zd.yml`.
 
