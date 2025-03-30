@@ -1,106 +1,101 @@
-# 2. Automated Takeoff Release Notes
+# Automated Release Notes
 
-This Repo is used to automatically generate release notes from several fields in Jira, and publish them to our [Zendesk Release Notes page](https://support.takeoff.com/hc/en-us/articles/4417757892753).
-
-This project was originally tracked by [PROD-2610](https://takeofftech.atlassian.net/browse/PROD-2610) and [PROD-3496](https://takeofftech.atlassian.net/browse/PROD-3496).
+This repo is used to automatically generate release notes from Jira and publish them to Zendesk using GitHub Actions workflows.
 
 ## Overview
 
-This release notes auotmation is meant to support a single-page, date-driven set of  Along with that, Takeoff's Engineering team began transitioning to a ci/cd microservices-based method of creating and deploying our software.
+This automation supports a centralized, single-page, date-driven changelog — modeled after release documentation from cloud-native SaaS providers (e.g., [Google Cloud Release Notes](https://cloud.google.com/release-notes)). It replaces manual or client-specific documentation with a more scalable approach, leveraging CI/CD practices.
 
-To accomodate those changes, we stopped generating client-specific Release Notes, and introduced a single-page model in Zendesk that is more common to Cloud SaaS companies. The common example we use for this is: https://cloud.google.com/release-notes.
+Publishing is handled via GitHub Actions, with scheduled jobs, Slack notifications, and structured review steps to ensure consistent, timely release communications.
 
-The details of this change are documented more extensively in Confluence [here](https://takeofftech.atlassian.net/wiki/spaces/TE/pages/3714285645/Release+Notes+Automation+Rollout) and [here](https://takeofftech.atlassian.net/wiki/spaces/TOP/blog/2022/11/08/3846668647/Release+Communications+Best+Practices+How+and+When+to+Communicate+about+Releases), and our [Engineering Handbook](https://engineering-handbook.takeofftech.org/docs/domains/production/release-notes/).
+There is a one-business-day SLA for review and publishing.
 
-There is a one-business-day SLA for reviewing and publishing of new or updated release notes.
+## Automation Workflow
 
-## Basic overview of the automation
+The automation is orchestrated using **GitHub Actions**. The core workflow, [`ZD_html_to_dict.yml`](https://github.com/takeoff-com/release-notes/blob/master/.github/workflows/ZD_html_to_dict.yml), runs on a **cron schedule**:
 
-1. [ZD_html_to_dict.yml](https://github.com/takeoff-com/release-notes/blob/master/.github/workflows/ZD_html_to_dict.yml) runs at 6 AM, 12 PM, and 6 PM (UTC) 7 days of the week.
+```yaml
+on:
+  schedule:
+    - cron: '0 6,12,18 * * *'  # Runs at 6 AM, 12 PM, and 6 PM UTC daily
+```
+### Workflow Steps
 
-That workflow performs several steps:
+1. **Zendesk Sync**  
+   The script fetches the current release notes from Zendesk and saves them to `data/zendesk_data.html`. This snapshot is used to compare existing notes against new updates.
 
-   1. It retrieves the contents of the Zendesk page and adds it to data/zendesk_data.html (for use in step 3).
+2. **Jira Query**  
+   The automation queries Jira for issues where the `Release Notes Required` field is set to `Yes - Ready to Publish`, and extracts:
+   - `Release Notes Description`
+   - `Fix Versions`
+   - `Product Area`
 
-   2. It then queries Jira for anything with **Release Notes Required** field value = **Yes - Ready to Publish** and adds the contents of the following fields to data/jira_data_temp.json:
+3. **Data Processing**  
+   A set of Python scripts handle parsing, merging, formatting, and generating the final release notes HTML:
 
-      - **Release Notes Description**
+   - `jira_issue.py`  
+     Converts raw Jira JSON into structured objects. Each Jira issue becomes a reusable Python class instance. It also:
+     - Sorts entries by earliest Fix Version.
+     - Filters out unwanted versions.
+     - Groups issues by product area and normalizes field values.
 
-      - **Fix Versions**
+   - `union_data.py`  
+     Merges and reconciles data from both Jira and the current Zendesk snapshot:
+     - Deduplicates entries.
+     - Maintains historical ordering and groupings.
+     - Sorts by date and issue type to build a unified changelog dataset.
 
-      - **Product Area**
+   - `html_to_dict.py`  
+     Parses the raw HTML content from Zendesk (`zendesk_data.html`) into a structured Python dictionary:
+     - Uses BeautifulSoup to preserve nested elements.
+     - Captures sections, tags, and release dates for comparison.
+     - Enables accurate diffing and minimal-overwrite updates.
 
-1. Once the above data is retrieved, we use several scripts to compare the data from Jira and Zendesk, add or update data accordingly, and then format and output that data to `release_notes_zendesk.html`. The scripts used are:
+   - `release_notes_builder.py`  
+     Assembles the final HTML release notes using data from `union_data.py` and `html_to_dict.py`:
+     - Injects new Jira issues into the correct location in the document.
+     - Applies formatting from `template.html` using Jinja2.
+     - Outputs a single, complete `release_notes_zendesk.html` file.
 
-  
+4. **Pull Request Generation**  
+   If updates are found, a GitHub Actions workflow automatically creates a pull request with the new release notes.
 
-   - `jira_issue.py` - Creates a list of jira entities from Jira data that can be used in `union_data.py`.
+5. **Slack Notification**  
+   A Slack message is sent to the **Technical Documentation Team** channel using a Slack app webhook to notify the team that a PR is ready for review.
 
-     - The data is sorted by date and grouped product area.
+6. **Publishing to Zendesk**  
+   When the pull request is approved and merged to `master`, a second GitHub Actions workflow (`send_to_zd.yml`) is triggered. This job:
+   - Converts the updated HTML to JSON via `html_to_json.py`.
+   - Sends the content to Zendesk via API, overwriting the previous article content.
 
-     - Fix Versions are parsed and the earliest one is used if there are multiple. The value is formatted as "RTww-yy" (date information is stripped), and non "RT" fix verisons are ignored.
+## Manual Workflow Options
 
-   - `union_data.py` - Unites data from zendesk and jira, sorts it, groups by Date and issueType, and then returns that unified data.
+### Run the Automation Manually
 
-   - `html_to_dict.py` - Creates a dictionary of jira items from html data.
+You can trigger the full workflow manually using **Workflow Dispatch**:
 
-   - `release_notes_builder.py` uses outputs from `html_to_dict` and `union_data.py` to generate the final release notes html file according to the format defined in the `template.html` file.
+1. In GitHub Actions, open the [`ZD_html_to_dict.yml`](https://github.com/takeoff-com/release-notes/blob/master/.github/workflows/ZD_html_to_dict.yml) workflow.
+2. Select "Run workflow" and provide any optional inputs.
+3. After the PR is merged, publishing will proceed automatically via `send_to_zd.yml`.
 
-4. At that point, a Pull Request is created so that a member of @team-chamaeleon can review the updated data according to the [Release Communications Best Practices](https://takeofftech.atlassian.net/wiki/spaces/TOP/blog/2022/11/08/3846668647/Release+Communications+Best+Practices+How+and+When+to+Communicate+about+Releases)
+### Modify a Previously Published Issue
 
-5. When the PR is approved and merged, [send_to_zd.yml](https://github.com/takeoff-com/release-notes/blob/master/.github/workflows/send_to_zd.yml) is triggered, which uses `html_to_json.py` to transform the contents of `release_notes_zendesk.html` to json, and send it to zendesk to overwrite the previous data in the article with the latest.
+You can update the description, change the date, or reorder previously published entries.
 
-  
-  
+**To update the description, fix version, or product area:**
 
-## Repo How-Tos
+1. Open the Jira issue and update the `Release Notes Description` field.
+2. The update will be picked up during the next scheduled run.
+3. The entry will remain in the same location and date group.
 
-### Review and Publish Release Notes
+**To manually change the date or location:**
 
-1. When Jira issues issues are marked as "Yes - Ready to Published," the automation will pick up the contents of the Release Notes Description field, add them to the release notes with a date stamp, and generate a PR.
+1. Create a branch and update the `release_notes_zendesk.html` file in the `data/` directory.
+2. Edit the Zendesk article manually via the HTML view to match the change.
+3. Merge the branch into `master`; the changes will be preserved on the next automation run.
 
-2. When the PR is created, a slack message is auto-generated in the [# Domain Technical Documentation](https://takeofftech.slack.com/archives/C01HD8K8QEP) slack channel.
+### Delete a Previously Published Issue
 
-3. The content of the changed file in the pull request must then be reviewed for language, client-identifiable info, etc. See [Release Notes Automation Launch](https://takeofftech.atlassian.net/wiki/spaces/TE/pages/3714285645/Release+Notes+Automation+Launch) for more detail.
-
-4. If everything looks good, the PR can be approved and merged to Master. That kicks off a final workflow that publishes the content to Zendesk.
-
-  
-
-#### Manually kick off a release notes run
-
-1. "Full Workflow" [ZD_html_to_dict.yml](https://github.com/takeoff-com/release-notes/blob/master/.github/workflows/ZD_html_to_dict.yml) can be run via Workflow dispatch
-
-2. Once the PR generated by that workflow is approved and merged, the rest of the publishing process takes place automatically via [send_to_zd.yml](https://github.com/takeoff-com/release-notes/blob/master/.github/workflows/send_to_zd.yml).
-
-#### Modify a previously published issue
-
-You can *update the description*, *change the date*, or *change order/location* a previously published issue.
-
-  
-
-**To update the description (or Product area, Fix Versions, ):**
-
-1. Open the related Jira ticket and update the **Release Note Description** field.
-
-2. The next time the automation runs that day, the updated description will replace the existing one. The issue will stay with the same location and date.
-
-If the change must be made urgently, please reach out to @team-chamaeleon with the Jira number and desired date.
-
-  
-
-**Change the location in the Zendesk article, or date:**
-
-1. In this repo, create a new branch and modify the html file in data > [release_notes_zendesk.html](https://github.com/takeoff-com/release-notes/blob/master/data/release_notes_zendesk.html) according to the requested changes.
-
-2. Open Zendesk and also modify the [Release Notes article](https://takeoffhelp.zendesk.com/hc/en-us/articles/4417757892753-Takeoff-Release-Notes) accoridngly. Be sure to use the "HTML" view to preserve any tag structure.
-
-3. Merge to Master and a workflow will be kicked off that publishes the modified content to Zendesk. The change will be preserved after that.
-
-#### Delete a previously published issue
-
-1. In this repo, create a new branch and delete the issue and corresponding date (if its the only issue under that date) in the html file in data > [release_notes_zendesk.html](https://github.com/takeoff-com/release-notes/blob/master/data/release_notes_zendesk.html) according to the requested changes.
-
-2. Open Zendesk and also modify the [Release Notes article](https://takeoffhelp.zendesk.com/hc/en-us/articles/4417757892753-Takeoff-Release-Notes) accoridngly. Be sure to preserve any div tags in the html view.
-
-3. Merge to Master and a workflow will be kicked off that publishes the modified content to Zendesk. The change will be preserved after that point.
+1. Create a branch and remove the entry (and date heading, if it was the only entry) from `release_notes_zendesk.html`.
+2. Update the Zendesk article accordingly via the HTML editor.
+3. Merge to `master` to trigger the publishing workflow.
