@@ -2,13 +2,12 @@
 # https://gohugo.io/hosting-and-deployment/hosting-on-netlify/#configure-hugo-version-in-netlify
 
 [build]
-command = "npm run build:preview"
-publish = "public"
+  command = "npm run build:preview"
+  publish = "public"
 
 [build.environment]
-HUGO_VERSION = "0.124.1"  # Use your local Hugo version here
-GO_VERSION = "1.22.2"
-STATICRYPT_PASSWORD = "your-password-here"  # Optional: use Netlify UI for security
+  HUGO_VERSION = "0.125.7" # Match your local Hugo version
+  GO_VERSION = "1.22.2"
 
 [context.production]
-command = "npm run build:production"
+  command = "npm run build:production"
