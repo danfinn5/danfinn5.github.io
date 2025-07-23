@@ -22,19 +22,19 @@ title: Portfolio
 
 {{% blocks/section color="light" type="row" %}}
 {{% blocks/feature icon="fa-brands fa-linkedin" title="Linkedin" %}}
-Connect on [Linkedin](https://www.linkedin.com/in/danielrfinn/).
+Connect on [Linkedin](https://www.linkedin.com/in/danielrfinn/)
 
 {{% /blocks/feature %}}
 
 
 {{% blocks/feature icon="fab fa-github" title="GitHub" %}}
-Visit my [GitHub Repo](https://github.com/danfinn5/portfoliosamples)
+View my [GitHub profile](https://github.com/danfinn5)
 
 {{% /blocks/feature %}}
 
 
 {{% blocks/feature icon="fa-envelope" title="Email" %}}
-For questions or feedback.
+For questions or feedback, [email me](mailto:danfinn5@gmail.com)
 
 {{% /blocks/feature %}}
 
