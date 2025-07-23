@@ -14,7 +14,7 @@ title: Portfolio
 {{% blocks/lead color="#78e8f9" %}}
 “My favorite piece of technical writing: Assembly of Japanese bicycle require great peace of mind.”
 
-— Robert M. Pirsig
+— Robert M. Pirsig1
 
 
 {{% /blocks/lead %}}
