@@ -1,5 +1,5 @@
 
-# My Portfolio Site
+# Portfolio Site
 
 This repository hosts the source code for my personal portfolio website, built using the Hugo static site generator. It features a fast and efficient framework to showcase my writing samples, projects, and technical documentation expertise. 
 
