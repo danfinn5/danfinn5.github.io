@@ -127,7 +127,7 @@ prism_syntax_highlighting = false
 
 [params.copyright]
   authors = "Dan Finn | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0) | "
-  from_year = 
+  from_year = 2023
 
 # User interface configuration
 [params.ui]
