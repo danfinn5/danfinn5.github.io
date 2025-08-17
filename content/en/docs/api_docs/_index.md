@@ -18,9 +18,9 @@ This API allows you to retrieve and manage data about classic European cars, suc
 - OAuth2 authentication for secure access
 
 ### Table of Contents
-[Get started now]({{< relref "gettingstarted.md" >}})
-[Authentication]({{< relref "auth.md" >}})
-[API Reference]({{< relref "reference.md" >}})
-[Error Handling]({{< relref "errorhandling.md" >}})
-[Use Cases]({{< relref "use_cases.md" >}})
-[Frequently Asked Questions]({{< relref "faq.md" >}})
+[Get started now]({{< relref "gettingstarted.md" >}}) <br>
+[Authentication]({{< relref "auth.md" >}}) <br>
+[API Reference]({{< relref "reference.md" >}}) <br>
+[Error Handling]({{< relref "errorhandling.md" >}}) <br>
+[Use Cases]({{< relref "use_cases.md" >}}) <br>
+[Frequently Asked Questions]({{< relref "faq.md" >}}) <br>
