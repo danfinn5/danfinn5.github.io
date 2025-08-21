@@ -1,6 +1,6 @@
 ---
 title: Portfolio
-linkTitle: Portfolio and Certificates
+linkTitle: Portfolio
 menu: {main: {weight: 20}}
 weight: 20
 ---
