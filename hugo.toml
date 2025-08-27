@@ -1,4 +1,4 @@
-baseURL = "https://danfinn5.github.io"
+baseURL = "https://danfinn5.netlify.app"
 title = ""
 
 # Language settings
@@ -105,9 +105,9 @@ version = "0.0"
 url_latest_version = "https://example.com"
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
-github_repo = "https://github.com/danfinn5/"
+github_repo = "https://github.com/danfinn5/danfinn5.github.io"
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
-github_project_repo = "https://github.com/danfinn5/"
+github_project_repo = "https://github.com/danfinn5/danfinn5.github.io"
 
 # Specify a value here if your content directory is not in your repo's root directory
 # github_subdir = ""
