@@ -1,0 +1,3 @@
+[submodule "samples"]
+	path = static/pdfs
+	url = git@github.com:danfinn5/portfoliosamples.git
