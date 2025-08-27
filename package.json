@@ -10,6 +10,7 @@
   "bugs": "https://github.com/google/docsy-example/issues",
   "spelling": "cSpell:ignore HTMLTEST precheck postbuild -",
   "scripts": {
+    "prebuild": "git submodule sync --recursive && git submodule update --init --recursive",
     "_build": "npm run _hugo-dev --",
     "_check:links": "echo IMPLEMENTATION PENDING for check-links; echo",
     "_hugo": "hugo --cleanDestinationDir",
@@ -18,6 +19,8 @@
     "_serve": "npm run _hugo-dev -- --minify serve",
     "build:preview": "hugo --buildDrafts && ./encrypt-samples.sh",
     "build:production": "hugo && ./encrypt-samples.sh",
+    "build:preview": "npm run prebuild && hugo --buildDrafts && ./encrypt-samples.sh",
+    "build:production": "npm run prebuild && hugo && ./encrypt-samples.sh",
     "build": "npm run _build -- ",
     "check:links:all": "HTMLTEST_ARGS= npm run _check:links",
     "check:links": "npm run _check:links",
