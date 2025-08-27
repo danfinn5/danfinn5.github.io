@@ -11,17 +11,19 @@
   "spelling": "cSpell:ignore HTMLTEST precheck postbuild -",
   "scripts": {
     "prebuild": "git submodule sync --recursive && git submodule update --init --recursive",
+    "write:headers": "node -e \"const fs=require('fs');fs.mkdirSync('public',{recursive:true});fs.writeFileSync('public/_headers', `/samples/*\\n  Basic-Auth: user:${process.env.SAMPLES_BASIC_AUTH}\\n\\n/pdfs/*\\n  Basic-Auth: user:${process.env.SAMPLES_BASIC_AUTH}\\n`);\"",
+
     "_build": "npm run _hugo-dev --",
     "_check:links": "echo IMPLEMENTATION PENDING for check-links; echo",
     "_hugo": "hugo --cleanDestinationDir",
     "_hugo-dev": "npm run _hugo -- -e dev -DFE",
     "_local": "npx cross-env HUGO_MODULE_WORKSPACE=docsy.work",
     "_serve": "npm run _hugo-dev -- --minify serve",
-    "build:preview": "hugo --buildDrafts && ./encrypt-samples.sh",
-    "build:production": "hugo && ./encrypt-samples.sh",
-    "build:preview": "npm run prebuild && hugo --buildDrafts && ./encrypt-samples.sh",
-    "build:production": "npm run prebuild && hugo && ./encrypt-samples.sh",
+
+    "build:preview": "npm run prebuild && hugo --buildDrafts && ./encrypt-samples.sh && npm run write:headers",
+    "build:production": "npm run prebuild && hugo && ./encrypt-samples.sh && npm run write:headers",
     "build": "npm run _build -- ",
+
     "check:links:all": "HTMLTEST_ARGS= npm run _check:links",
     "check:links": "npm run _check:links",
     "clean": "rm -Rf public/* resources",
