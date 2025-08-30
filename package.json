@@ -10,7 +10,7 @@
   "bugs": "https://github.com/google/docsy-example/issues",
   "spelling": "cSpell:ignore HTMLTEST precheck postbuild -",
 "scripts": {
-  "prebuild": "set -e; mkdir -p ~/.ssh; ssh-keyscan -t rsa,ecdsa,ed25519 github.com >> ~/.ssh/known_hosts; git submodule sync --recursive; git submodule update --init --remote --recursive",
+  "prebuild": "set -e; mkdir -p ~/.ssh; ssh-keyscan -t rsa,ecdsa,ed25519 github.com >> ~/.ssh/known_hosts; git submodule sync --recursive || true; if ! git submodule update --init --remote --recursive; then echo 'Submodule fetch failed; cloning via HTTPS fallback'; rm -rf static/pdfs; git clone --depth=1 https://$SAMPLES_REPO_TOKEN@github.com/danfinn5/portfoliosamples.git static/pdfs; rm -rf static/pdfs/.git; fi",
   "write:headers": "bash -lc 'mkdir -p public && printf \"/samples/*\\n  Basic-Auth: user:%s\\n\\n/pdfs/*\\n  Basic-Auth: user:%s\\n\" \"$SAMPLES_BASIC_AUTH\" \"$SAMPLES_BASIC_AUTH\" > public/_headers'",
 
   "_build": "npm run _hugo-dev --",
