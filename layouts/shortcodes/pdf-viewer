@@ -2,4 +2,7 @@
 <div>
     <h2>{{ .Get "title" }}</h2>
     <iframe src="/pdfjs/web/viewer.html?file={{ .Get "file" }}" width="60%" height="900px" style="border: solid; margin-bottom: 30px;"></iframe>
+    <p style="margin-top: 8px">
+        <a href="{{ .Get "file" }}" target="_blank" rel="noopener">Open the PDF in a new tab</a>
+    </p>
 </div>
