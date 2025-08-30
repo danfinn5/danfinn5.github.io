@@ -4,19 +4,31 @@ description: How to use Jira Automation to create and assign a common release ve
 weight: 3
 ---
 
-![Alt text](/images/ship/ships.png)
+![Release ships header image](/images/ship/ships.png)
 
 ## Introduction
 
-In Jira Cloud, release versions are project-specific, meaning shared versions across multiple projects aren't supported by default. However, by leveraging Jira’s built-in automation features and custom fields, you can create a solution that automatically generates and assigns synchronized release versions across several projects. This guide outlines how to set up such automation to manage release versions (e.g., Release Train versions) on a biweekly schedule, keeping multiple Jira projects in sync.
+In Jira Cloud, release versions are project-specific, meaning shared versions across multiple projects are not supported. For product and engineering teams, this can be a challenge. For instance, if you need to track and manage a common release version across multiple projects, your teams are forced to manually create and manage each project's release version, which can be time-consuming and prone to errors.
+
+By leveraging Jira’s built-in automation features, custom fields, and placeholder tickets, you can automate the process of generating release versions across multiple projects. By running on a biweekly schedule, it automatically sets the next release version, updates related issues, and ensures all projects are using identical versions. This ensures synchronized versioning, improves visibility, and eliminates manual effort.
+
+### Key Benefits
+- **Automation of repetitive tasks:** Ensures consistent version management with minimal manual effort.
+- **Improved visibility:** Helps track tickets related to a release across multiple projects.
+- **Consistency across projects:** Guarantees that all teams are using the same release versions, streamlining release visibilty across the organization.
+
+## Prerequisites
+To complete this guide, please ensure you have:
+- **Jira Administrator permissions**, or sufficient permission scope to create jira automation rules that affect multiple projects.
+- Familiarity with [Jira Automation](https://support.atlassian.com/cloud-automation/docs/jira-cloud-automation/) and basic [REST API](https://aws.amazon.com/what-is/api/) concepts.
 
 ## Use Case Example
 
-Imagine a scenario where your company conducts regular deployments for a suite of software services. The development teams responsible for these services each use a different Jira project. By automating the creation of common release versions, you gain visibility into which tickets across various projects are associated with a particular deployment. This automation ensures consistent versioning across projects and streamlines release management.
+Imagine a scenario where your company conducts regular deployments for a suite of software services. The development teams responsible for these services each use a different Jira project. By automating the creation of common release versions, you gain visibility into all tickets across each project are associated with a particular deployment. This automation ensures consistent versioning and streamlines release management.
 
 ## Solution Overview
 
-To achieve this, we will create a Jira automation rule that runs on a biweekly schedule and uses custom fields to create and manage the next release version (RT version) across multiple projects.
+To achieve this, we will create a Jira automation rule that runs on a biweekly schedule and uses custom fields to create and apply each release version in multiple Jira projects.
 
 ### Components of the Automation Rule
 
@@ -60,12 +72,3 @@ This indicates the release occurs in the 43rd week of 2024, and the release date
 
 5. **Version Synchronization Across Projects:**
    - **Log and Apply Version:** The new release version is created across all relevant projects using their project IDs, ensuring consistent versioning.
-
-## Summary
-
-This Jira automation rule simplifies the process of managing release versions across multiple projects. By running on a biweekly schedule, it automatically sets the next release version, updates related issues, and ensures all projects are using the correct version numbers. This ensures synchronized versioning, improves visibility, and eliminates manual effort.
-
-## Key Benefits
-- **Automation of repetitive tasks:** Ensures consistent version management with minimal manual effort.
-- **Improved visibility:** Helps track tickets related to a release across multiple projects.
-- **Consistency across projects:** Guarantees that all teams are using the same release versions, streamlining deployments across the organization.
