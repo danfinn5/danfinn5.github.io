@@ -1,6 +1,6 @@
 ---
 date: 2025-08-30
-title: Site refresh: Hugo + Netlify (faster deploys)
+title: Site refresh with Netlify (faster deploys)
 linkTitle: Portfolio site update
 description: >
   I moved the site to Hugo on Netlify for quicker updates and easy previews.
