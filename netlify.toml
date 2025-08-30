@@ -8,3 +8,9 @@
 
 [context.production]
   command = "npm install -g staticrypt && npm run build:production"
+
+[[redirects]]
+  from = "/pdfs/*"
+  to = "/pdfs/pdfs/:splat"
+  status = 200
+  force = true
