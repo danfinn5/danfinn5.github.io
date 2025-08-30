@@ -1,5 +1,5 @@
 ---
 title: Automation Guides
-description: This section contains descriptions of helpful tools and automations. 
+description: Helpful automation guides for workplace tools. 
 weight: 6
 ---
