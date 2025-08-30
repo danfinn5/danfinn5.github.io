@@ -9,7 +9,3 @@
 [context.production]
   command = "npm install -g staticrypt && npm run build:production"
 
-[[headers]]
-  for = "/pdfs/*"
-  [headers.values]
-    Basic-Auth = "user:$SAMPLES_BASIC_AUTH"
