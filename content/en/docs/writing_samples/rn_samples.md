@@ -1,5 +1,6 @@
 ---
 title: Release Notes Samples
+draft: true
 layout: "protected"
 description: Some examples of general Release Notes and Hotfix documentation.
 date: 2024-06-25
