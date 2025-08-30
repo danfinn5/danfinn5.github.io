@@ -2,7 +2,7 @@
 title: Getting Started
 type: 
 weight: 2
-description: "Getting Started guide for the Euro Classics API"
+description: "Getting Started guide for the Euro Classics API."
 ---
 
 Welcome to the Classic European Cars API! This API allows you to retrieve and manage data about classic European cars and collections. Whether you want to build an app that showcases classic cars or manage your own collection, this guide will help you get started.

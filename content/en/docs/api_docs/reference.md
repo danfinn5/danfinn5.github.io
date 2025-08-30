@@ -2,7 +2,7 @@
 title: Euro Classics API Reference
 type: "swagger"
 weight: 4
-description: "Reference for the Euro Classics API"
+description: "Reference for the Euro Classics API."
 ---
 
 Below is a complete reference for all API endpoints, available directly via the Swagger UI:

@@ -7,7 +7,7 @@ weight: 2
 
 ![Slack power plug graphic header image](/images/slack/hq720.jpg)
 
-## Table of Contents
+<!-- ## Table of Contents
 1. [Example Use Case](#example-use-case)
 2. [Overview](#overview)
 3. [Jira Automation Rules](#jira-automation-rules)
@@ -19,12 +19,16 @@ weight: 2
 6. [Steps](#steps)
    - [Step 1: Create the Slack App](#step-1-create-the-slack-app)
    - [Step 2: Create Jira Automation Rules](#step-2-create-jira-automation-rules)
-   - [Step 3: Customize the Rules](#step-3-customize-the-rules)
-
----
+   - [Step 3: Customize the Rules](#step-3-customize-the-rules) -->
 
 ## Use Case
 For this Jira and Slack App integration, consider a scenario in which your organization performs regular deployments of microservices, and each development team uses different Jira projects. Each deployment must have a dedicated Slack channel assocaited with it that references the deployment ticket, as well as key details of the ticket and deployment. This automation streamlines the process of creating each Slack channel, populating detals about the ticket, and even automatically updating the channel if the ticket changes.
+
+## Prerequisites
+To complete this guide, please ensure you have:
+- **Jira Administrator permissions** to create automation rules.
+- A **Slack account** with permissionsto create a Slack App.
+- Familiarity with [Jira Automation](https://support.atlassian.com/cloud-automation/docs/jira-cloud-automation/) and basic [REST API](https://aws.amazon.com/what-is/api/) concepts.
 
 ## Overview
 To implement this solution, you'll need to:
@@ -67,12 +71,6 @@ flowchart TD
   Channel_Fields_Change --> Update_Fields --> Send_Update_To_Slack --> Update_Channel
   Jira_Ticket_Completed --> Archive_Channel --> Log_Response
 ```
-
-## Prerequisites
-To follow this guide, ensure you have:
-- **Jira Administrator permissions** to create automation rules.
-- A **Slack account** to create a Slack App.
-- Familiarity with [Jira Automation](https://support.atlassian.com/cloud-automation/docs/jira-cloud-automation/) and basic [REST API](https://aws.amazon.com/what-is/api/) concepts.
 
 ## Steps
 
