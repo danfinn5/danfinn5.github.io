@@ -73,9 +73,9 @@ flowchart TD
 2. Click **Create Rule**, then configure **Rule 1- Slack Channel Creation**:
    - Set the trigger as a field update (e.g., a custom field like "Create Slack Channel").
    - Add a condition to check if required fields (e.g., summary, priority) are filled.
-   - Set up an action to send a request to the Slack Web API to create the channel.
-     ![Jira Slack web request action](/images/slack/slack_webrequest.jpg)
-   **Note:** Slack requires channel names to be lowercase. Use `.toLowerCase()` in the request body.
+   - Set up an action to send a request to the Slack Web API to create the channel.<br>
+   ![Jira Slack web request action](/images/slack/slack_webrequest.jpg)<br>
+   **Note:** Slack requires channel names to be lowercase. Use `.toLowerCase()` in the request body.<br>
    **Note:** Select the **Hidden** checkbox for the Slack authorization header to avoid exposing your token.
    - Store the Slack channel ID and timestamp in Jira. For example, as a string in a custom field.
 3. Click **Turn on rule**.
