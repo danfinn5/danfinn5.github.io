@@ -1,14 +1,14 @@
 [build]
-  command = "npm run build:production"
+  command = "bash -lc 'git submodule sync --recursive && git submodule update --init --recursive && echo SUBMODULE_SHA=$(git -C static/pdfs rev-parse --short HEAD) && npm run build:production'"
   publish = "public"
 
 [build.environment]
   HUGO_VERSION = "0.125.7"
-GO_VERSION = "1.22.2"
-ENABLE_ENCRYPT = "0"
+  GO_VERSION = "1.22.2"
+  ENABLE_ENCRYPT = "0"  # ensure your npm scripts check this
 
 [context.production]
-  command = "npm run build:production"
+  command = "bash -lc 'git submodule sync --recursive && git submodule update --init --recursive && echo SUBMODULE_SHA=$(git -C static/pdfs rev-parse --short HEAD) && npm run build:production'"
 
 [[redirects]]
   from = "/pdfs/*"
