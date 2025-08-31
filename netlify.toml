@@ -11,7 +11,7 @@
   command = "bash -lc 'git submodule sync --recursive && git submodule update --init --recursive && echo SUBMODULE_SHA=$(git -C static/pdfs rev-parse --short HEAD) && npm run build:production'"
 
 [[redirects]]
-  from = "/pdfs/*"
-  to = "/pdfs/pdfs/:splat"
-  status = 200
+  from = "/pdfs/pdfs/*"
+  to = "/pdfs/:splat"
+  status = 301
   force = true
