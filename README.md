@@ -8,8 +8,9 @@ The website highlights my skills in:
 - REST API documentation
 - Markdown, Git, and version control practices
 - Creating and maintaining static websites using Hugo
-- Use of GitHub workflows for automating deployments
-- Python scripting for automating processes
+- (formerly) Use of GitHub workflows for automating deployments
+- (currently) Use of Netlify for automating deployments and hosting this site.
+<!-- - Python scripting for automating processes -->
 
 ## Overview
 
@@ -36,8 +37,8 @@ To run this site locally for testing or further development, follow these steps:
 
 2. **Clone this repository:**
    ```bash
-   git clone https://github.com/your-username/your-portfolio-repo.git
-   cd your-portfolio-repo
+   git clone https://github.com/danfinn5/danfinn5.github.io.git
+   cd danfinn5.github.io
    ```
 
 3. **Run Hugo:**
