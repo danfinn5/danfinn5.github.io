@@ -1,6 +1,4 @@
----
 title: Portfolio
----
 
 {{< blocks/cover title="Welcome!" image_anchor="top" height="full" >}}
 <a class="btn btn-lg btn-primary me-3 mb-4" href="/docs/">
@@ -14,7 +12,7 @@ title: Portfolio
 {{% blocks/lead color="#78e8f9" %}}
 “My favorite piece of technical writing: Assembly of Japanese bicycle require great peace of mind.”
 
-— Robert M. Pirsig1
+— Robert M. Pirsig
 
 
 {{% /blocks/lead %}}
