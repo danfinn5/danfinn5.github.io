@@ -1,4 +1,4 @@
 [submodule "samples"]
 	path = static/pdfs
-	url = git@github.com:danfinn5/portfoliosamples.git
+	url = https://github.com/danfinn5/danfinn5.github.io.git
 	branch = main
