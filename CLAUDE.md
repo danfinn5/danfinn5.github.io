@@ -26,17 +26,26 @@ hugo --minify --cleanDestinationDir  # Production build
 
 ## Architecture
 
-- **Content** lives in `content/en/` (primary), with `content/fa/` and `content/no/` for multilingual support
-- **Docsy theme** is loaded as a Hugo module (configured in `hugo.toml` under `[module]`), not vendored in the repo
-- **Custom layouts** in `layouts/`: protected page template (`_default/protected.html`), PDF viewer shortcode, custom heading renderer, embedded PDF layout
-- **Styling** in `assets/scss/`: `_variables_project.scss` for theme variable overrides, `_styles_project.scss` for custom CSS
-- **Sample content** behind basic-auth is encrypted via `encrypt-samples.sh` during production builds; auth headers written to `public/_headers` by the `write:headers` script
-- **Deployment**: Netlify builds via `netlify.toml` (production command syncs submodules then runs `npm run build:production`). A legacy GitHub Actions workflow (`build.yml`) also exists for GitHub Pages.
+- **Content** lives in `content/en/` (primary), with `content/fa/` and `content/no/` for multilingual support. Sections: `docs/`, `blog/`, `about/`.
+- **Docsy theme** is loaded as a Hugo module (configured in `hugo.toml` under `[module]`), not vendored in the repo.
+- **Custom layouts** in `layouts/`: protected page template (`_default/protected.html`), PDF viewer shortcode (`shortcodes/pdf-viewer/`), custom heading renderer (`_default/_markup/render-heading.html`), embedded PDF layout (`embedpdf.html`).
+- **Styling** in `assets/scss/`: `_variables_project.scss` for theme variable overrides, `_styles_project.scss` for custom CSS. Prefix custom partials with `_`.
+- **PDFs** served from `static/pdfs/` (a git submodule). Netlify build syncs submodules automatically.
+- **Sample encryption**: `encrypt-samples.sh` encrypts specific pages under `docs/writing_samples/` using Staticrypt. Controlled by `ENABLE_ENCRYPT` env var (disabled by default on Netlify). Auth headers for `/samples/*` and `/pdfs/*` written to `public/_headers` by the `write:headers` script using `SAMPLES_BASIC_AUTH` env var.
+- **Deployment**: Netlify builds via `netlify.toml` (production command syncs submodules then runs `npm run build:production`). Legacy GitHub Actions workflows (`build.yml`, `hugodeploy.yml`) exist but are not the primary deployment path.
+
+## Content Conventions
+
+- Use Hugo front matter (YAML) at the top of markdown files.
+- Follow Docsy content types: `docs/`, `blog/`, `about/`.
+- Use Hugo shortcodes for special content (alerts, tabs, etc.).
+- Override theme templates by placing files in `layouts/` mirroring the Docsy theme structure.
+- Goldmark renderer is set to `unsafe = true` — raw HTML is allowed in markdown.
 
 ## Key Config Files
 
-- `hugo.toml` — Main Hugo config (base URL, languages, theme params, taxonomy, markup settings)
-- `netlify.toml` — Netlify build commands and redirects
+- `hugo.toml` — Main Hugo config (base URL, languages, theme params, taxonomy, markup settings, Docsy module import)
+- `netlify.toml` — Netlify build commands, environment vars (Hugo 0.125.7, Go 1.22.2), and redirects
 - `package.json` — npm scripts wrapping Hugo commands; pinned hugo-extended 0.125.7
 
 ## Requirements
